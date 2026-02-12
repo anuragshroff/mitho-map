@@ -1,0 +1,4 @@
+[mcp_servers.laravel-boost]
+command = "php"
+args = ["artisan", "boost:mcp"]
+cwd = "/media/anurag/dc559ad2-348f-479d-aa49-f971d5f89d38/client-project/food"
