@@ -1,8 +1,19 @@
-import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { Link, usePage } from '@inertiajs/react';
+import {
+    BookOpen,
+    Building2,
+    CircleUserRound,
+    ClipboardList,
+    Folder,
+    LayoutGrid,
+    Percent,
+    ShoppingBag,
+    Store,
+    Tv,
+    UtensilsCrossed,
+} from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
-import { NavUser } from '@/components/nav-user';
 import {
     Sidebar,
     SidebarContent,
@@ -13,14 +24,66 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
-import type { NavItem } from '@/types';
+import { dashboard as adminDashboard } from '@/routes/admin';
+import { index as adminCouponsIndex } from '@/routes/admin/coupons';
+import { index as adminKitchenOrderTicketsIndex } from '@/routes/admin/kitchen-order-tickets';
+import { index as adminMenuItemsIndex } from '@/routes/admin/menu-items';
+import { index as adminOrdersIndex } from '@/routes/admin/orders';
+import { index as adminRestaurantsIndex } from '@/routes/admin/restaurants';
+import { index as adminStoriesIndex } from '@/routes/admin/stories';
+import { index as adminUsersIndex } from '@/routes/admin/users';
+import type { NavItem, SharedData } from '@/types';
+import { NavUser } from './nav-user';
 import AppLogo from './app-logo';
 
-const mainNavItems: NavItem[] = [
+const baseNavItems: NavItem[] = [
     {
         title: 'Dashboard',
         href: dashboard(),
         icon: LayoutGrid,
+    },
+];
+
+const adminNavItems: NavItem[] = [
+    {
+        title: 'Admin Overview',
+        href: adminDashboard(),
+        icon: Building2,
+    },
+    {
+        title: 'Orders',
+        href: adminOrdersIndex(),
+        icon: ShoppingBag,
+    },
+    {
+        title: 'Kitchen Tickets',
+        href: adminKitchenOrderTicketsIndex(),
+        icon: ClipboardList,
+    },
+    {
+        title: 'Menu Items',
+        href: adminMenuItemsIndex(),
+        icon: UtensilsCrossed,
+    },
+    {
+        title: 'Restaurants',
+        href: adminRestaurantsIndex(),
+        icon: Store,
+    },
+    {
+        title: 'Stories',
+        href: adminStoriesIndex(),
+        icon: Tv,
+    },
+    {
+        title: 'Coupons',
+        href: adminCouponsIndex(),
+        icon: Percent,
+    },
+    {
+        title: 'Users',
+        href: adminUsersIndex(),
+        icon: CircleUserRound,
     },
 ];
 
@@ -38,13 +101,22 @@ const footerNavItems: NavItem[] = [
 ];
 
 export function AppSidebar() {
+    const { auth } = usePage<SharedData>().props;
+
+    const isAdmin = auth.user.role === 'admin';
+    const mainNavItems = isAdmin
+        ? [...baseNavItems, ...adminNavItems]
+        : baseNavItems;
+
+    const homeRoute = isAdmin ? adminDashboard() : dashboard();
+
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link href={dashboard()} prefetch>
+                            <Link href={homeRoute} prefetch>
                                 <AppLogo />
                             </Link>
                         </SidebarMenuButton>
