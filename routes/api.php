@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AiFoodSuggestionController;
 use App\Http\Controllers\Api\V1\AuthRegistrationController;
 use App\Http\Controllers\Api\V1\AuthTokenController;
 use App\Http\Controllers\Api\V1\CurrentUserController;
@@ -7,10 +8,13 @@ use App\Http\Controllers\Api\V1\CustomerOrderController;
 use App\Http\Controllers\Api\V1\DriverTrackingController;
 use App\Http\Controllers\Api\V1\KitchenOrderTicketController;
 use App\Http\Controllers\Api\V1\OrderChatController;
+use App\Http\Controllers\Api\V1\PhoneLoginController;
 use App\Http\Controllers\Api\V1\PhoneVerificationController;
 use App\Http\Controllers\Api\V1\RestaurantOrderStatusController;
 use App\Http\Controllers\Api\V1\RestaurantStoryController;
+use App\Http\Controllers\Api\V1\SearchController;
 use App\Http\Controllers\Api\V1\SocialAuthController;
+use App\Http\Controllers\Api\V1\UpdateCurrentUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->name('api.v1.')->group(function () {
@@ -22,9 +26,20 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
         ->middleware('throttle:10,1')
         ->name('auth.phone.verify-code');
 
+    Route::post('auth/phone/login', [PhoneLoginController::class, 'store'])
+        ->middleware('throttle:20,1')
+        ->name('auth.phone.login');
+
     Route::post('auth/register', [AuthRegistrationController::class, 'store'])
         ->middleware('throttle:10,1')
         ->name('auth.register');
+
+    Route::post('auth/forgot-password', [\App\Http\Controllers\Api\V1\AuthPasswordResetController::class, 'sendResetLinkEmail'])
+        ->middleware('throttle:5,1')
+        ->name('auth.password.email');
+
+    Route::post('auth/reset-password', [\App\Http\Controllers\Api\V1\AuthPasswordResetController::class, 'resetPassword'])
+        ->name('auth.password.reset');
 
     Route::post('auth/social/login', [SocialAuthController::class, 'store'])
         ->middleware('throttle:20,1')
@@ -37,14 +52,25 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
     Route::get('banners', [App\Http\Controllers\Api\V1\BannerController::class, 'index'])->name('banners.index');
     Route::get('special-offers', [App\Http\Controllers\Api\V1\SpecialOfferController::class, 'index'])->name('special-offers.index');
     Route::get('stories', [RestaurantStoryController::class, 'index'])->name('stories.index');
+    Route::get('search', SearchController::class)->name('search.index');
+
+    Route::apiResource('categories', \App\Http\Controllers\Api\V1\CategoryController::class)->only(['index', 'show']);
+    Route::apiResource('restaurants', \App\Http\Controllers\Api\V1\RestaurantController::class)->only(['index', 'show']);
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::get('auth/me', CurrentUserController::class)->name('auth.me');
+        Route::put('auth/me', UpdateCurrentUserController::class)->name('auth.me.update');
 
         Route::get('user/preferences', [\App\Http\Controllers\Api\V1\UserPreferenceController::class, 'show'])->name('user.preferences.show');
         Route::put('user/preferences', [\App\Http\Controllers\Api\V1\UserPreferenceController::class, 'update'])->name('user.preferences.update');
 
+        Route::apiResource('user/addresses', \App\Http\Controllers\Api\V1\UserAddressController::class);
+
         Route::delete('auth/token', [AuthTokenController::class, 'destroy'])->name('auth.token.destroy');
+
+        Route::get('ai/food-suggestions', [AiFoodSuggestionController::class, 'index'])
+            ->middleware('ability:orders:read')
+            ->name('ai.food-suggestions.index');
 
         Route::get('orders', [CustomerOrderController::class, 'index'])
             ->middleware('ability:orders:read')

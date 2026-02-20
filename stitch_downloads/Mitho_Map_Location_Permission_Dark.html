@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Location Permission</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25f46a",
+                        "background-light": "#f5f8f6",
+                        "background-dark": "#102216",
+                        "surface-dark": "#152e1e",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom styles to handle specific visual requirements */
+        .glass-glow {
+            box-shadow: 0 0 60px -10px rgba(37, 244, 106, 0.2);
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(37, 244, 106, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased selection:bg-primary selection:text-background-dark h-screen overflow-hidden flex flex-col items-center justify-between relative">
+<!-- Decorative background glow elements -->
+<div class="absolute top-[-10%] left-[-20%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none opacity-50"></div>
+<div class="absolute bottom-[-10%] right-[-20%] w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] pointer-events-none opacity-30"></div>
+<!-- Main Content Container -->
+<main class="flex-1 w-full max-w-md flex flex-col items-center justify-center p-6 relative z-10">
+<!-- Icon Section -->
+<div class="relative w-full aspect-square max-w-[320px] flex items-center justify-center mb-8">
+<!-- Inner decorative ring -->
+<div class="absolute inset-0 m-auto w-[80%] h-[80%] border border-primary/20 rounded-full animate-pulse opacity-50"></div>
+<div class="absolute inset-0 m-auto w-[60%] h-[60%] border border-primary/10 rounded-full"></div>
+<!-- 3D Map Pin Image Placeholder -->
+<div class="relative z-10 w-full h-full flex items-center justify-center glass-glow rounded-full">
+<!-- Using a specific abstract 3D shape or map pin illustration -->
+<div class="w-[220px] h-[220px] bg-contain bg-center bg-no-repeat drop-shadow-2xl" data-alt="3D glowing green map pin icon floating in dark space" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCrKhrBZULhNybzZMedD3Ura5_sB4DJTxZ_dyVmfyz0xkE4ZwvL9FDlG4IY1fIfmQ4XG7E5dEK1119OtOnROZecDuXzrfiz2ByEVmYc_X1nQXcpnARmqV3jlG7R9IyiYoWxHahkUKJv1p9FSrSf99vsylDpHZLv4MdWgZ7O5Xsrp9mDbH4QC7L39Fv4323mwgPZg5yPTeNfY5u7K5r6roNA_Ggk5PCAV0av4ugvYorsJRA2tvgQHZltw8jZAJ93oqHEMO0LVPmbh28');"></div>
+</div>
+<!-- Floating particles for atmosphere -->
+<div class="absolute top-1/4 right-1/4 w-2 h-2 bg-primary rounded-full blur-[1px] opacity-60"></div>
+<div class="absolute bottom-1/3 left-1/4 w-1.5 h-1.5 bg-primary/70 rounded-full blur-[1px] opacity-40"></div>
+</div>
+<!-- Text Content -->
+<div class="text-center space-y-4 max-w-[320px]">
+<h1 class="text-slate-900 dark:text-white text-3xl font-extrabold tracking-tight leading-tight">
+                Enable Your <br/>
+<span class="text-primary text-glow">Location</span>
+</h1>
+<p class="text-slate-600 dark:text-slate-300 text-base font-normal leading-relaxed">
+                To find the best restaurants near you, we need your location access.
+            </p>
+</div>
+<!-- Location Permission Preview (Mock UI Element) -->
+<div class="mt-8 p-3 rounded-2xl bg-surface-dark/50 border border-white/5 backdrop-blur-sm flex items-center gap-3 w-full max-w-[280px]">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">near_me</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="h-2 w-24 bg-white/20 rounded-full mb-2"></div>
+<div class="h-1.5 w-16 bg-white/10 rounded-full"></div>
+</div>
+<div class="w-4 h-4 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+</div>
+</div>
+</main>
+<!-- Bottom Actions -->
+<footer class="w-full max-w-md p-6 pb-8 relative z-10 flex flex-col gap-4">
+<button class="w-full h-14 bg-primary hover:bg-[#1ee060] active:scale-[0.98] transition-all duration-200 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(37,244,106,0.3)] group">
+<span class="material-symbols-outlined text-background-dark mr-2 text-[20px] group-hover:animate-bounce">location_on</span>
+<span class="text-background-dark text-base font-bold tracking-wide">Allow Location</span>
+</button>
+<button class="w-full h-10 bg-transparent hover:bg-white/5 rounded-full flex items-center justify-center transition-colors">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-semibold tracking-wide">Maybe Later</span>
+</button>
+</footer>
+</body></html>

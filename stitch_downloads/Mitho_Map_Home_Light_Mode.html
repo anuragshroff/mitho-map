@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2460d",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#0d0a09",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-primary {
+            background: rgba(242, 70, 13, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(242, 70, 13, 0.2);
+        }
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-24">
+<!-- Top Navigation Header -->
+<header class="sticky top-0 z-50 px-4 py-4 glass dark:border-b dark:border-white/5">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-slate-500 dark:text-slate-400 font-bold">Deliver to</span>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-xl">location_on</span>
+<h1 class="text-sm font-bold">KTM, Nepal</h1>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-primary/20 overflow-hidden">
+<img alt="Profile Picture" class="w-full h-full object-cover" data-alt="Close up portrait of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsrf792--VXC6IGUAJXZ9LZPRxbxJCXzSlYyNNo8sYz7v0e8Dtj_oUW1DcVhibg7aTQ9GKgYYrgdTFEGs70o72uUxiK2cCaWoBGFobnM5Q6TYZPdowtKHTIDv_HgwN8dB5tLd992MQuU3j9kKKiZPQzOh3-EIxoFP7UNqw1j86sKg3EFUA2AD1X6IXxs8nBy9MoAdVnSoJrylKVZAYDSmZ8VoL0bg0att1cMNknac89VC7jmK-_KCdWehqT1ow95zdgAZLHihMENs"/>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="mt-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-slate-100 dark:bg-white/5 border-none rounded-full py-3 pl-12 pr-4 text-sm focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Search for momo, pizza, cafe..." type="text"/>
+</div>
+</div>
+</header>
+<main class="mt-2">
+<!-- Categories Horizontal Scroll -->
+<section class="px-4 py-4 overflow-x-auto flex gap-4 no-scrollbar">
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-16 h-16 rounded-full glass-primary flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">local_pizza</span>
+</div>
+<span class="text-xs font-semibold">Pizza</span>
+</div>
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-16 h-16 rounded-full glass flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-3xl">lunch_dining</span>
+</div>
+<span class="text-xs font-semibold">Burger</span>
+</div>
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-16 h-16 rounded-full glass flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-3xl">ramen_dining</span>
+</div>
+<span class="text-xs font-semibold">Nepali</span>
+</div>
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-16 h-16 rounded-full glass flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-3xl">bakery_dining</span>
+</div>
+<span class="text-xs font-semibold">Indian</span>
+</div>
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-16 h-16 rounded-full glass flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-3xl">icecream</span>
+</div>
+<span class="text-xs font-semibold">Sushi</span>
+</div>
+<div class="flex flex-col items-center gap-2 shrink-0">
+<div class="w-16 h-16 rounded-full glass flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-3xl">cake</span>
+</div>
+<span class="text-xs font-semibold">Dessert</span>
+</div>
+</section>
+<!-- Popular Deals Carousel -->
+<section class="py-4">
+<div class="flex justify-between items-center px-4 mb-3">
+<h2 class="text-xl font-extrabold tracking-tight">Popular Deals</h2>
+<button class="text-primary text-sm font-bold">See All</button>
+</div>
+<div class="flex overflow-x-auto gap-4 px-4 no-scrollbar">
+<div class="relative w-80 h-44 rounded-lg overflow-hidden shrink-0">
+<img alt="Pepperoni Pizza" class="absolute inset-0 w-full h-full object-cover" data-alt="Close up of delicious pepperoni pizza with melting cheese" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu3dFVfvCvIkbt4u5z0FE8UvzOANSSbs72qDoithGoOglF5mF6XBrFkZX7x-_wAnWibenIR88bfF4IbvL0FdnmVddrOOrdAZY1D95LGkvqjNZxmLekdbgrtkEWLyfYhwSGl0Y3sl6enEYh58HOnkPY5Q_nMGssM-ztEb67AqyP6E0LfFWL6ez8bOohyz1jPAttxTjoMuBcMyMQtPtuVZnolbzrgHJBrLRQ2xrczXN2rHLMLnh5wjdHTCgTJel0LVjMZ9OAQ8alUnU"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent p-6 flex flex-col justify-center">
+<span class="bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full w-fit mb-2">50% OFF</span>
+<h3 class="text-white text-xl font-bold leading-tight">First order bonus<br/>for New Users</h3>
+<button class="mt-3 bg-primary text-white text-xs font-bold py-2 px-4 rounded-full w-fit">Claim Now</button>
+</div>
+</div>
+<div class="relative w-80 h-44 rounded-lg overflow-hidden shrink-0">
+<img alt="Healthy Salad" class="absolute inset-0 w-full h-full object-cover" data-alt="Vibrant healthy salad bowl with avocado and greens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlNMyRVobHvNAaEFzuHOO4sHicJcOtE6oiWT0GoDq9FbvXUk4Eq2zvlHBE8Cqwd76v7lk8DcTASZUixFnfUeZWKKLtWnZ8DxiTrGo_BDxq3bzlUzq-oV0JrZPHta-YlYwEgs7fJRcmwRx0n0nbPMHpzKD2i1g9nS0qiSPA47XnW69ROwmm6md8LBbu6ErFgJc7eLXsX7uGDnGVb-mwoeAtGBMxIE7LQKM_bpkqBl8lrPeQUvieQZhBe2J9qpGsPMOON_lVMDLXDjM"/>
+<div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent p-6 flex flex-col justify-center">
+<span class="bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-full w-fit mb-2">FREE DELIVERY</span>
+<h3 class="text-white text-xl font-bold leading-tight">Healthy Weekends<br/>Every Saturday</h3>
+<button class="mt-3 bg-white text-primary text-xs font-bold py-2 px-4 rounded-full w-fit">Order Healthy</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Restaurants -->
+<section class="py-4">
+<div class="flex justify-between items-center px-4 mb-3">
+<h2 class="text-xl font-extrabold tracking-tight">Featured Restaurants</h2>
+</div>
+<div class="flex overflow-x-auto gap-4 px-4 no-scrollbar">
+<div class="w-64 shrink-0 rounded-lg overflow-hidden glass group">
+<div class="relative h-32">
+<img alt="Restaurant Interior" class="w-full h-full object-cover" data-alt="Elegant restaurant interior with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9urs9vLAg071gqZPCmPfOr4eiwZblIWVu4x-cM_gq-PfUJXPvoniTrEXEWpTz_5AZO4CbHdmukmS7bZGbOIyNXKeuVVVEUHDHDMwMlwL6wl4IMaTk36ILiYPK1xhpV4vMaFeK8ioPA1WtPMzuy060M30ZwP0TYKejC4bysCOV1x869cVdXMc_UBQsAGK14NUhsRmkA7Frab35ScLr1gZrW0_42R5QqT_pBYMNuiJ8eOj_gkLr09qp-boJGc5C5LFWI_2B12p094o"/>
+<div class="absolute top-2 right-2 glass-primary px-2 py-1 rounded-full text-[10px] font-bold text-white flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] fill-1">star</span> 4.8
+                        </div>
+</div>
+<div class="p-3">
+<h4 class="font-bold text-sm truncate">The Mitho Kitchen</h4>
+<div class="flex items-center gap-2 mt-1 text-[11px] text-slate-500">
+<span class="flex items-center gap-0.5"><span class="material-symbols-outlined text-xs">schedule</span> 15-20 min</span>
+<span class="w-1 h-1 bg-slate-500 rounded-full"></span>
+<span>$$ • International</span>
+</div>
+</div>
+</div>
+<div class="w-64 shrink-0 rounded-lg overflow-hidden glass">
+<div class="relative h-32">
+<img alt="Sushi Platter" class="w-full h-full object-cover" data-alt="Beautifully arranged sushi platter with salmon and tuna" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-Y01aBuzIXYbSAnfzVYjTyqQ7IxLSY2rh_Ix5oVoPaXdk0QzCic67FV50gb_yAClY6MEfHuf5rCSI478TXRTHrP_P6gWnZKqHGwiJ8QVevaeue6kBsXWDMfaGw45EfJ42-YPM4Ffvw9LVodJFPeKl8cQ1EQx-71q1J0ZduvxCSdStXBCPC7DBjwWwqhh7LPL8PgC6HzTEi5k9qnwwUmiiMuz1xKpwjoTfaIHtLv0fOeqd0Txe8xi148HIWWx4Y9aysrByzbIA5u4"/>
+<div class="absolute top-2 right-2 glass-primary px-2 py-1 rounded-full text-[10px] font-bold text-white flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] fill-1">star</span> 4.5
+                        </div>
+</div>
+<div class="p-3">
+<h4 class="font-bold text-sm truncate">Sakura Zen Garden</h4>
+<div class="flex items-center gap-2 mt-1 text-[11px] text-slate-500">
+<span class="flex items-center gap-0.5"><span class="material-symbols-outlined text-xs">schedule</span> 25-30 min</span>
+<span class="w-1 h-1 bg-slate-500 rounded-full"></span>
+<span>$$$ • Japanese</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Near You Section -->
+<section class="px-4 py-4">
+<h2 class="text-xl font-extrabold tracking-tight mb-4">Restaurants Near You</h2>
+<div class="space-y-4">
+<!-- Vertical Card 1 -->
+<div class="flex gap-4 glass p-2 rounded-lg items-center">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+<img alt="Juicy Burger" class="w-full h-full object-cover" data-alt="Giant juicy burger with melting cheese and fries" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByJ1S9Aa1pZxwavbbpwOsXl7asvuewL2U_fOEg79Q1K8dmd_4k9XdXayzGBvaOtZ1A1vJMsUzdQaQ45zvxQhHGozb5YxYuPzNKP1jeTtJDCpbgGjw-dd0B6TP37XG41fdh0jvTIYj9XnSY6tq2KtVSJocQ9y9H5InTW0H6hF8VfD3Dx_nHgOpQK2VZGm4CBROCWKoseWbgPP-kAWX0YNNiJE0jI3rxlr-s-o_eROjrQXVj7dvyWZxgikjt0VxftCL2ZjDPmsjKdTo"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h4 class="font-bold">Burger Hub &amp; Grill</h4>
+<p class="text-xs text-slate-500">American • Fast Food</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1 text-xs font-bold text-primary">
+<span class="material-symbols-outlined text-xs fill-1">star</span> 4.2
+                                </span>
+<span class="text-[10px] text-slate-400">1.2 km</span>
+</div>
+<span class="text-[10px] font-bold bg-green-500/10 text-green-500 px-2 py-1 rounded-full">Free Delivery</span>
+</div>
+</div>
+</div>
+<!-- Vertical Card 2 -->
+<div class="flex gap-4 glass p-2 rounded-lg items-center">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+<img alt="Noodles" class="w-full h-full object-cover" data-alt="Hot steaming bowl of spicy noodles with egg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdWdxG2Sn0DgbcswJO2h8LDcz-bQZmPPicTH6sNXBWftVGP8xipg_TDp2AuAJlIGAttZbDFKl72XZzdSIFXInBNsyQ2SR6_R_ml7aFgnP17Ao-lkSUrxfrWJmHmAKH4X7AXjoWqd7jo1WS9Ag6Nh03_DBp9VdeF7toWIBkWOhGPPspcABibNUvjKnvZ-vWWy3AtecTmFCMhnyK9RYaW-6WYFQDuQTf1qvuuFtC61xodBMa3GFbYry4bVRJl_p0GKdPSxwiDxkNZ9Q"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h4 class="font-bold">Wok &amp; Roll Express</h4>
+<p class="text-xs text-slate-500">Chinese • Stir Fry</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1 text-xs font-bold text-primary">
+<span class="material-symbols-outlined text-xs fill-1">star</span> 4.6
+                                </span>
+<span class="text-[10px] text-slate-400">0.8 km</span>
+</div>
+<span class="text-[10px] font-bold bg-primary/10 text-primary px-2 py-1 rounded-full">Bestseller</span>
+</div>
+</div>
+</div>
+<!-- Vertical Card 3 -->
+<div class="flex gap-4 glass p-2 rounded-lg items-center">
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+<img alt="Indian Curry" class="w-full h-full object-cover" data-alt="Rich butter chicken curry with garlic naan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3JIc0xcZv2VOgVMtOFDNQnsApmwQvOsR8oDeCaQ67LEUlJWPSbDAKzf1Y_dPY84C-50cPrbeTBjSD9C69HhLjPYP_j2VRt76AEjfXDQ6_Wt-ri9NkaMUxcKt0BuqJlXMRge7lP2nG9IfR-pqBDBQ_wn-Kj3VxEpVmMsjr6k1cNciGw63loiZ5tbL9NOqNzWBm6tK9mVTpvnq-8w8VwM16gYqW24ePQazYkaGG_OvMARyAbtBQPNRZui5OAm5MEkCDJoATz-c0EgU"/>
+</div>
+<div class="flex-1 flex flex-col justify-between py-1">
+<div>
+<h4 class="font-bold">Namaste Spice House</h4>
+<p class="text-xs text-slate-500">Indian • Curry</p>
+</div>
+<div class="flex items-center justify-between mt-2">
+<div class="flex items-center gap-2">
+<span class="flex items-center gap-1 text-xs font-bold text-primary">
+<span class="material-symbols-outlined text-xs fill-1">star</span> 4.9
+                                </span>
+<span class="text-[10px] text-slate-400">2.4 km</span>
+</div>
+<span class="text-[10px] font-bold bg-slate-500/10 text-slate-500 px-2 py-1 rounded-full">Closed</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] glass rounded-full px-6 py-3 flex justify-between items-center shadow-2xl z-[100]">
+<a class="flex flex-col items-center gap-0.5 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 text-slate-400" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-[10px] font-medium">Explore</span>
+</a>
+<div class="relative -top-8 w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white shadow-lg shadow-primary/30 border-4 border-background-light dark:border-background-dark">
+<span class="material-symbols-outlined text-3xl">shopping_cart</span>
+<span class="absolute -top-1 -right-1 bg-white text-primary text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-primary">2</span>
+</div>
+<a class="flex flex-col items-center gap-0.5 text-slate-400" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-medium">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-0.5 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+<!-- iOS Home Indicator -->
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-400/20 rounded-full z-[110]"></div>
+</body></html>

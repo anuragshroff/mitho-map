@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00C853", // Vibrant green from the reference
+                        "background-light": "#F5F5F5",
+                        "background-dark": "#121212", // Very dark grey/black
+                        "secondary-dark": "#1E1E1E",
+                    },
+                    fontFamily: {
+                        display: ["Poppins", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>@keyframes spin-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loader-ring {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+        }
+        .loader-ring:after {
+            content: " ";
+            display: block;
+            width: 32px;
+            height: 32px;
+            margin: 4px;
+            border-radius: 50%;
+            border: 3px solid #00C853;
+            border-color: #00C853 transparent #00C853 transparent;
+            animation: spin-slow 1.2s linear infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display h-screen flex flex-col items-center justify-center relative overflow-hidden transition-colors duration-300">
+<div class="absolute top-0 w-full px-6 py-4 flex justify-between items-center text-gray-800 dark:text-gray-200 z-10">
+<span class="text-sm font-medium">9:41</span>
+<div class="flex items-center space-x-2">
+<span class="material-icons text-xs">signal_cellular_alt</span>
+<span class="material-icons text-xs">wifi</span>
+<span class="material-icons text-xs">battery_full</span>
+</div>
+</div>
+<main class="flex flex-col items-center justify-center w-full max-w-md mx-auto h-full px-6">
+<div class="flex flex-col items-center mb-24 animate-fade-in-up">
+<div class="relative mb-6">
+<div class="absolute inset-0 bg-primary opacity-20 blur-xl rounded-full transform scale-150"></div>
+<svg class="relative z-10" fill="none" height="100" viewBox="0 0 24 24" width="100" xmlns="http://www.w3.org/2000/svg">
+<path class="stroke-gray-800 dark:stroke-gray-100" d="M12 3C7.58172 3 4 6.58172 4 11V13H20V11C20 6.58172 16.4183 3 12 3Z" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+<path class="stroke-gray-800 dark:stroke-gray-100" d="M12 3V2" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+<path class="stroke-gray-800 dark:stroke-gray-100" d="M2 13H22" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+<path class="stroke-gray-800 dark:stroke-gray-100" d="M16 17C16 17.5523 15.5523 18 15 18H9C8.44772 18 8 17.5523 8 17" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+<path d="M15 8C15 8 16.5 6.5 17 7.5C17.5 8.5 16 9.5 16 9.5" stroke="#00C853" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</div>
+<div class="text-center">
+<h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    Mitho <span class="text-primary">Map</span>
+</h1>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-2 font-light tracking-widest uppercase">Premium Delivery</p>
+</div>
+</div>
+<div class="absolute bottom-20 flex flex-col items-center">
+<div class="loader-ring mb-4"></div>
+<p class="text-xs text-gray-400 dark:text-gray-600 animate-pulse">Loading experience...</p>
+</div>
+</main>
+<div class="fixed top-[-10%] right-[-10%] w-64 h-64 bg-primary opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="fixed bottom-[-10%] left-[-10%] w-64 h-64 bg-primary opacity-5 rounded-full blur-3xl pointer-events-none"></div>
+<script>
+        // Simple script to toggle dark mode for demonstration purposes if viewing in browser
+        // In a real app, this would respect system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        } else {
+             // Forcing dark mode here because the prompt specifically requested a dark aesthetic
+             // and the reference images are dark. Remove this else block to respect system light mode.
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+</body></html>

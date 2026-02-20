@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\KitchenOrderTicketStatus;
 use App\Enums\OrderStatus;
 use App\Enums\UserRole;
+use App\Events\KitchenOrderTicketUpdated;
 use App\Events\OrderStatusUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AssignAdminOrderDriverRequest;
@@ -228,6 +229,7 @@ class AdminOrderController extends Controller
         }
 
         $ticket->save();
+        KitchenOrderTicketUpdated::dispatch($ticket);
     }
 
     /**

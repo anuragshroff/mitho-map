@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map - Let's You In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00C55E", // Vibrant green from the reference
+                        "primary-dark": "#009E4B",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#181A20", // Dark gray/black background
+                        "surface-light": "#F5F5F5",
+                        "surface-dark": "#1F222A",
+                        "border-dark": "#35383F",
+                    },
+                    fontFamily: {
+                        display: ["Urbanist", "sans-serif"],
+                        body: ["Urbanist", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem", // Rounded corners common in modern mobile UI
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.1)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-900 dark:text-white antialiased transition-colors duration-300 min-h-screen flex items-center justify-center">
+<div class="w-full max-w-md mx-auto h-screen sm:h-auto sm:min-h-[800px] sm:rounded-[3rem] sm:border-8 border-gray-200 dark:border-gray-800 bg-background-light dark:bg-background-dark relative overflow-hidden flex flex-col px-6 py-8 shadow-2xl">
+<div class="w-full h-6 flex justify-between items-center mb-4 px-2 opacity-0 sm:opacity-100">
+<span class="text-xs font-semibold">9:41</span>
+<div class="flex gap-1.5">
+<div class="w-4 h-4 bg-current rounded-full opacity-20"></div>
+<div class="w-4 h-4 bg-current rounded-full opacity-20"></div>
+<div class="w-6 h-4 bg-current rounded-md opacity-20"></div>
+</div>
+</div>
+<div class="flex items-center mb-6">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-surface-dark transition-colors focus:outline-none">
+<i class="fas fa-arrow-left text-xl"></i>
+</button>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center mb-8">
+<div class="relative w-64 h-64 mb-6">
+<img alt="Login Illustration with character and secure interface" class="w-full h-full object-contain drop-shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY8dXz9NvujJRGG1vN-gRaAA7kA_dzMAiaDY41b1SNU2CAKxrj7i-MON7fcrb3-IW9prrqRTdlaLxUf4D2c5KxHIgeG-91iLSD1cWvhfhQ3_62VoMx-4iFiTSEL3gF_0cFShGkaFCRpnUxElhEPv3jm_3PmSGHheGFNtlxZcDLOH0Jd3AevBWWFsLw5wF7rfEeHXgCXN3zoa3uqQ7xTIhx3U6H8NKcHOz6FzASsJ5uamAiVydqPIrjGjTr712q7nztxS5uIkZu7Oc"/>
+</div>
+<h1 class="text-4xl font-bold text-center mb-2 tracking-tight">Let's you in</h1>
+</div>
+<div class="space-y-4 w-full mb-8">
+<button class="w-full flex items-center justify-center gap-3 py-4 px-6 border border-gray-200 dark:border-border-dark rounded-2xl bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-opacity-80 transition-all duration-200 group">
+<i class="fab fa-facebook text-[#1877F2] text-2xl group-hover:scale-110 transition-transform"></i>
+<span class="font-semibold text-gray-700 dark:text-white text-[15px]">Continue with Facebook</span>
+</button>
+<button class="w-full flex items-center justify-center gap-3 py-4 px-6 border border-gray-200 dark:border-border-dark rounded-2xl bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-opacity-80 transition-all duration-200 group">
+<img alt="Google Logo" class="w-6 h-6 group-hover:scale-110 transition-transform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkv_qf5cO6t3f17Iuq0Swxzm-XbxVugoQka6893ALTuG7N1bQdSnO_QNJ4C_WuVKXuew6mvn0B08_emedkdIIbVC06t44xbgQCTutLu3bPSxv_tiIkBDg2tL67B8ntJK-Q3BWCinkySM-0Xq4RwF5uz-zCbgcBOa31UXWFBU1gjuJ5-tzXBAQ7y17NjX5cLBEthrbxRYIIF2IU-1efvMMaZ4l7g-6iyRuPMbpzi2oTiGjbUrx0fhAdmdxUhfOCEV0L9Uj_LpWR4Ic"/>
+<span class="font-semibold text-gray-700 dark:text-white text-[15px]">Continue with Google</span>
+</button>
+<button class="w-full flex items-center justify-center gap-3 py-4 px-6 border border-gray-200 dark:border-border-dark rounded-2xl bg-white dark:bg-surface-dark hover:bg-gray-50 dark:hover:bg-opacity-80 transition-all duration-200 group">
+<i class="fab fa-apple text-black dark:text-white text-2xl group-hover:scale-110 transition-transform"></i>
+<span class="font-semibold text-gray-700 dark:text-white text-[15px]">Continue with Apple</span>
+</button>
+</div>
+<div class="relative flex items-center gap-4 mb-8 w-full px-4">
+<div class="h-px bg-gray-200 dark:bg-border-dark flex-1"></div>
+<span class="text-sm font-medium text-gray-500 dark:text-gray-400">or</span>
+<div class="h-px bg-gray-200 dark:bg-border-dark flex-1"></div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-full shadow-lg shadow-green-500/30 transition-all duration-200 transform active:scale-[0.98] mb-6">
+            Sign in with Password
+        </button>
+<div class="text-center pb-4">
+<p class="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                Don't have an account? 
+                <a class="text-primary hover:text-primary-dark font-bold ml-1 transition-colors" href="#">Sign up</a>
+</p>
+</div>
+<div class="w-full flex justify-center mt-auto pt-2 pb-1">
+<div class="w-32 h-1.5 bg-gray-300 dark:bg-gray-600 rounded-full"></div>
+</div>
+</div>
+<button class="fixed top-4 right-4 bg-gray-800 dark:bg-white text-white dark:text-gray-900 p-3 rounded-full shadow-lg z-50 hover:scale-110 transition-transform" onclick="document.documentElement.classList.toggle('dark')">
+<i class="fas fa-moon dark:hidden"></i>
+<i class="fas fa-sun hidden dark:block"></i>
+</button>
+
+</body></html>

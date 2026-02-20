@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map - Create Account</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0df259",
+                        "background-light": "#f5f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom styles for subtle glassmorphism and focus rings */
+        .glass-input {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .glass-input:focus-within {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #0df259;
+            box-shadow: 0 0 0 1px #0df259;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col justify-center items-center p-4 selection:bg-primary selection:text-black">
+<div class="w-full max-w-md mx-auto flex flex-col gap-8">
+<!-- Header / Logo Area -->
+<div class="flex flex-col items-center gap-6 pt-8 pb-4">
+<div class="relative w-24 h-24 rounded-full bg-gradient-to-br from-[#1b3a26] to-[#0f2015] flex items-center justify-center shadow-2xl shadow-primary/10 border border-primary/20">
+<span class="material-symbols-outlined text-primary text-5xl">local_pizza</span>
+<!-- Decorative glow behind logo -->
+<div class="absolute -z-10 w-full h-full bg-primary/20 blur-xl rounded-full"></div>
+</div>
+<div class="text-center space-y-2">
+<h1 class="text-slate-900 dark:text-white text-3xl font-extrabold tracking-tight">Mitho Map</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Create your premium account</p>
+</div>
+</div>
+<!-- Form Area -->
+<form class="flex flex-col gap-5 w-full">
+<!-- Full Name Input -->
+<div class="space-y-2">
+<label class="sr-only" for="fullname">Full Name</label>
+<div class="glass-input flex items-center w-full rounded-full border border-slate-200 dark:border-white/10 px-4 h-14 group">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 mr-3">person</span>
+<input class="bg-transparent border-none text-slate-900 dark:text-white w-full h-full focus:ring-0 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-base" id="fullname" placeholder="Full Name" type="text"/>
+</div>
+</div>
+<!-- Email Input -->
+<div class="space-y-2">
+<label class="sr-only" for="email">Email Address</label>
+<div class="glass-input flex items-center w-full rounded-full border border-slate-200 dark:border-white/10 px-4 h-14 group">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 mr-3">mail</span>
+<input class="bg-transparent border-none text-slate-900 dark:text-white w-full h-full focus:ring-0 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-base" id="email" placeholder="Email Address" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-2">
+<label class="sr-only" for="password">Password</label>
+<div class="glass-input flex items-center w-full rounded-full border border-slate-200 dark:border-white/10 px-4 h-14 group">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 mr-3">lock</span>
+<input class="bg-transparent border-none text-slate-900 dark:text-white w-full h-full focus:ring-0 placeholder:text-slate-400 dark:placeholder:text-slate-500 text-base" id="password" placeholder="Password" type="password"/>
+<button class="text-slate-400 dark:text-slate-500 hover:text-primary dark:hover:text-primary transition-colors flex items-center" type="button">
+<span class="material-symbols-outlined">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Action Button -->
+<button class="mt-4 w-full h-14 bg-primary hover:bg-primary/90 text-background-dark font-bold text-lg rounded-full shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2" type="button">
+                Create Account
+                <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</form>
+<!-- Footer / Social Login (Optional) / Sign In Link -->
+<div class="flex flex-col items-center gap-6 pb-6">
+<div class="relative flex py-2 w-full items-center">
+<div class="flex-grow border-t border-slate-200 dark:border-white/10"></div>
+<span class="flex-shrink mx-4 text-slate-400 dark:text-slate-600 text-xs uppercase tracking-wider font-semibold">Or continue with</span>
+<div class="flex-grow border-t border-slate-200 dark:border-white/10"></div>
+</div>
+<div class="flex gap-4 w-full justify-center">
+<button class="flex items-center justify-center w-14 h-14 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors group">
+<!-- Google SVG Icon -->
+<img alt="Google" class="w-6 h-6 grayscale group-hover:grayscale-0 transition-all opacity-70 group-hover:opacity-100" data-alt="Google logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgGJHMdL-Pw1Nx3INOxSRnHPPq_WWi2rG2QydGbStq_Av1UupgozSrqlpzKX2aWO437vJp2iumBKKMJ_utaMn5EUeJ8b2Ar5mGm3wltrG631F8qAsdIb3dDajm900LdO4iaLUmVlPeEA-ahjp01MxXGmGsXtkYWyXwwSMuUdHrDiLY2kC9T3eOKM_osUrHuYwiaikObNHhojFHkhZMHJlC2hNRc6uc1Sp0c7yfNSdncllEIdpSvcR3ENn9BTpQ9yNo1KokNICoXL8"/>
+</button>
+<button class="flex items-center justify-center w-14 h-14 rounded-full border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 hover:bg-slate-50 dark:hover:bg-white/10 transition-colors group">
+<!-- Apple SVG Icon -->
+<span class="material-symbols-outlined text-slate-900 dark:text-white text-2xl">grid_view</span>
+</button>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm text-center mt-2">
+                Already have an account? 
+                <a class="text-primary font-bold hover:underline underline-offset-4 ml-1" href="#">Sign in</a>
+</p>
+</div>
+</div>
+<!-- Decorative background elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none -z-50 overflow-hidden">
+<div class="absolute -top-[10%] -right-[10%] w-[50%] h-[50%] bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute top-[20%] -left-[10%] w-[30%] h-[30%] bg-blue-500/5 rounded-full blur-[80px]"></div>
+</div>
+</body></html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Welcome Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#10b981", // Emerald-500, a vibrant green from the screenshot
+                        "primary-hover": "#059669",
+                        "background-light": "#ffffff",
+                        "background-dark": "#18181b", // Zinc-900, very dark grey/black
+                    },
+                    fontFamily: {
+                        display: ["Poppins", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        "xl": "1.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }.no-scrollbar {
+            -ms-overflow-style: none;scrollbar-width: none;}
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-900 dark:text-gray-100 h-screen w-full flex justify-center items-center overflow-hidden">
+<div class="relative w-full h-full max-w-md bg-background-light dark:bg-background-dark overflow-hidden flex flex-col">
+<div class="absolute top-0 w-full px-6 py-4 flex justify-between items-center z-50 text-white">
+<span class="text-sm font-medium">9:41</span>
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-sm">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-sm">wifi</span>
+<span class="material-symbols-outlined text-sm">battery_full</span>
+</div>
+</div>
+<div class="absolute inset-0 z-0">
+<img alt="Delicious fresh pizza on dark background with ingredients" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3XRJesqKqwx-k-CGAbRB2AyXC7EXb3KjFp6UHNQv8McBx5kySaRDDIrx5b4qyNF_qp1XoROD_gqNDGgaddxmlMX9T9-bo8x9JsvQsN4qNzExAu8fb08B8HEFBNIiEJGzOmrIyShti2rO499hKX2ETkPQ33ly0Av8j3Td_nCW3dPUtLMkwExWs0XfFuOTRTKdvBHGqHd917vzYWDWPP3aK_B-v1Ltx7bZI-JHO90Ina_QFCxnlwsbOT87TNkFOa5KcOZ9SeqlxdRo"/>
+<div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/60 to-transparent"></div>
+<div class="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+</div>
+<div class="relative z-10 flex flex-col justify-end h-full px-8 pb-10">
+<h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+<span class="text-white block">Welcome to</span>
+<span class="text-primary">Mitho Map</span>
+</h1>
+<p class="text-gray-300 text-sm md:text-base mb-10 leading-relaxed font-light">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+<button class="w-full bg-primary hover:bg-primary-hover active:scale-95 transition-all duration-200 text-white font-semibold py-4 px-6 rounded-full shadow-lg shadow-primary/30 flex items-center justify-center group">
+<span class="text-lg">Get Started</span>
+<span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<div class="flex justify-center mt-6 space-x-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-gray-600"></div>
+<div class="w-2 h-2 rounded-full bg-gray-600"></div>
+</div>
+</div>
+</div>
+
+</body></html>

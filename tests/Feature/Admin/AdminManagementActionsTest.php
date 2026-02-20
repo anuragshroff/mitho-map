@@ -3,6 +3,7 @@
 use App\Enums\KitchenOrderTicketStatus;
 use App\Enums\OrderStatus;
 use App\Enums\UserRole;
+use App\Events\KitchenOrderTicketUpdated;
 use App\Events\OrderStatusUpdated;
 use App\Models\Coupon;
 use App\Models\KitchenOrderTicket;
@@ -250,7 +251,7 @@ it('allows admin to manage coupons', function () {
 });
 
 it('allows admin to manage kitchen order ticket status', function () {
-    Event::fake([OrderStatusUpdated::class]);
+    Event::fake([OrderStatusUpdated::class, KitchenOrderTicketUpdated::class]);
 
     $admin = User::factory()->admin()->create();
     $customer = User::factory()->customer()->create();
@@ -294,6 +295,7 @@ it('allows admin to manage kitchen order ticket status', function () {
     ]);
 
     Event::assertDispatched(OrderStatusUpdated::class);
+    Event::assertDispatched(KitchenOrderTicketUpdated::class);
 });
 
 it('allows admin to update user role and blocks self demotion', function () {

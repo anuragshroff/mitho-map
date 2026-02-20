@@ -30,7 +30,8 @@ class RestaurantFactory extends Factory
             'state' => fake()->stateAbbr(),
             'latitude' => fake()->latitude(),
             'longitude' => fake()->longitude(),
-            'is_open' => fake()->boolean(90),
+            'is_open' => fake()->boolean(),
+            'is_active' => true,
         ];
     }
 }

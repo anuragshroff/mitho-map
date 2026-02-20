@@ -18,6 +18,7 @@ class OrderResource extends JsonResource
         return [
             'id' => $this->id,
             'status' => $this->status?->value,
+            'tracking_channel' => 'orders.'.$this->id,
             'subtotal_cents' => $this->subtotal_cents,
             'delivery_fee_cents' => $this->delivery_fee_cents,
             'discount_cents' => $this->discount_cents,
@@ -74,7 +75,43 @@ class OrderResource extends JsonResource
                 })->all();
             }),
             'kitchen_order_ticket' => KitchenOrderTicketResource::make($this->whenLoaded('kitchenOrderTicket')),
+            'kitchen_state' => $this->whenLoaded('kitchenOrderTicket', function (): ?array {
+                if ($this->kitchenOrderTicket === null) {
+                    return null;
+                }
+
+                return [
+                    'status' => $this->kitchenOrderTicket->status?->value,
+                    'accepted_at' => $this->kitchenOrderTicket->accepted_at?->toIso8601String(),
+                    'ready_at' => $this->kitchenOrderTicket->ready_at?->toIso8601String(),
+                ];
+            }),
             'tracking_updates' => DeliveryTrackingUpdateResource::collection($this->whenLoaded('trackingUpdates')),
+            'latest_tracking_update' => $this->whenLoaded('trackingUpdates', function (): ?array {
+                $latest = $this->trackingUpdates->first();
+
+                if ($latest === null) {
+                    return null;
+                }
+
+                return [
+                    'id' => $latest->id,
+                    'order_id' => $latest->order_id,
+                    'driver_id' => $latest->driver_id,
+                    'latitude' => (float) $latest->latitude,
+                    'longitude' => (float) $latest->longitude,
+                    'heading' => $latest->heading === null ? null : (float) $latest->heading,
+                    'speed_kmh' => $latest->speed_kmh === null ? null : (float) $latest->speed_kmh,
+                    'recorded_at' => $latest->recorded_at?->toIso8601String(),
+                ];
+            }),
+            'live_state' => [
+                'is_preparing' => in_array($this->status?->value, ['confirmed', 'preparing'], true),
+                'is_out_for_delivery' => $this->status?->value === 'out_for_delivery',
+                'is_delivered' => $this->status?->value === 'delivered',
+                'is_cancelled' => $this->status?->value === 'cancelled',
+                'has_driver' => $this->driver_id !== null,
+            ],
             'status_history' => $this->whenLoaded('statusHistories', function () {
                 return $this->statusHistories->map(function (OrderStatusHistory $history): array {
                     return [

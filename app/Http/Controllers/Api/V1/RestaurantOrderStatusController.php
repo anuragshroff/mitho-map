@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Enums\KitchenOrderTicketStatus;
 use App\Enums\OrderStatus;
 use App\Enums\UserRole;
+use App\Events\KitchenOrderTicketUpdated;
 use App\Events\OrderStatusUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\UpdateOrderStatusRequest;
@@ -122,5 +123,6 @@ class RestaurantOrderStatusController extends Controller
         }
 
         $ticket->save();
+        KitchenOrderTicketUpdated::dispatch($ticket);
     }
 }

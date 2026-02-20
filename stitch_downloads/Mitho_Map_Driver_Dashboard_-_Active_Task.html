@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Driver Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2460d",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#181311",
+                        "card-dark": "#271e1b",
+                        "border-dark": "#392c28",
+                        "text-muted": "#baa39c",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between px-6 pt-6 pb-4 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined filled-icon text-2xl">local_shipping</span>
+</div>
+<h1 class="text-xl font-extrabold tracking-tight">Mitho Map</h1>
+</div>
+<!-- Status Toggle -->
+<div class="flex items-center bg-card-dark rounded-full p-1 border border-border-dark">
+<span class="px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary">Online</span>
+<div class="w-12 h-6 bg-primary rounded-full relative flex items-center px-1">
+<div class="absolute right-1 w-4 h-4 bg-white rounded-full shadow-sm"></div>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-4 pb-32">
+<!-- Active Task Section -->
+<section class="mt-4">
+<div class="flex items-center justify-between mb-3 px-2">
+<h2 class="text-sm font-bold uppercase tracking-widest text-text-muted">Active Task</h2>
+<span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+</div>
+<div class="bg-card-dark rounded-xl border border-border-dark overflow-hidden shadow-2xl">
+<!-- Map Preview -->
+<div class="w-full h-44 bg-slate-800 relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="Modern dark themed city map navigation interface" data-location="San Francisco City Map" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC7avHQ9zju5qbayI4C2Afi8EsBMVWLO3PNffjejpabgN_eliFS1rFQMQ6YKBozovnW8GFcmM_2Ql4QPE5eTYtQa7ov3c4gBvUVLWPwAnSyi9KufFZkvhHEyR-EK6-mzw7T3AwL2po8Mb6OJzpB8pyriIxANmkOKzVM63jcOpl6bmIskZ2HU7zoljQmIxBV545_NOZId1VV-1Q59oTJL0nvLNEWh8l-SZjx7GdGQhqCCclUeThz8l0cixamen9syFnd_8JWaKV-ahE");'>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-card-dark/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-primary text-white text-[10px] font-black px-2 py-1 rounded uppercase tracking-tighter">Priority Delivery</span>
+</div>
+</div>
+<div class="p-5 flex flex-col gap-6">
+<!-- Order Info -->
+<div class="flex justify-between items-start">
+<div>
+<h3 class="text-2xl font-extrabold text-white leading-none mb-1">Order #MT-8829</h3>
+<p class="text-text-muted text-sm font-medium">Estimated arrival: 12:45 PM</p>
+</div>
+<div class="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold">
+                            $12.50 + Tip
+                        </div>
+</div>
+<!-- Journey Details -->
+<div class="space-y-6 relative">
+<!-- Connecting Line -->
+<div class="absolute left-[11px] top-6 bottom-6 w-0.5 border-l-2 border-dashed border-border-dark"></div>
+<!-- Pickup -->
+<div class="flex gap-4 relative">
+<div class="z-10 bg-card-dark p-1">
+<span class="material-symbols-outlined text-primary text-2xl">restaurant</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-text-muted uppercase tracking-wider mb-1">Pickup from</p>
+<p class="text-white font-bold text-lg">Pizza Roma</p>
+<p class="text-text-muted text-sm mb-3">123 Main St, Suite 400</p>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full w-full justify-center transition-colors">
+<span class="material-symbols-outlined text-lg">navigation</span>
+                                    Navigate to Pickup
+                                </button>
+</div>
+</div>
+<!-- Drop-off -->
+<div class="flex gap-4 relative">
+<div class="z-10 bg-card-dark p-1">
+<span class="material-symbols-outlined text-text-muted text-2xl">location_on</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold text-text-muted uppercase tracking-wider mb-1">Drop-off to</p>
+<p class="text-white font-bold text-lg">Sarah J.</p>
+<p class="text-text-muted text-sm mb-3">456 Oak Ave, Apt 12B</p>
+<button class="flex items-center gap-2 bg-border-dark hover:bg-border-dark/80 text-white font-bold py-3 px-6 rounded-full w-full justify-center transition-colors">
+<span class="material-symbols-outlined text-lg">near_me</span>
+                                    Navigate to Drop-off
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Earnings Summary -->
+<section class="mt-8">
+<div class="bg-primary rounded-xl p-6 shadow-lg shadow-primary/20">
+<div class="flex justify-between items-center mb-1">
+<h3 class="text-white/80 text-sm font-bold uppercase tracking-widest">Earnings Today</h3>
+<span class="material-symbols-outlined text-white/60">trending_up</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="text-4xl font-extrabold text-white">$142.50</span>
+<span class="text-white/80 font-bold mb-1">/ 8 Trips</span>
+</div>
+</div>
+</section>
+<!-- Recent Deliveries -->
+<section class="mt-8">
+<h2 class="text-sm font-bold uppercase tracking-widest text-text-muted mb-4 px-2">Recent Deliveries</h2>
+<div class="space-y-3">
+<!-- Delivery Item 1 -->
+<div class="bg-card-dark/50 p-4 rounded-xl border border-border-dark flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-border-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-text-muted">check_circle</span>
+</div>
+<div>
+<p class="text-white font-bold">Burger King</p>
+<p class="text-text-muted text-xs">Completed at 11:20 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-white font-black">$8.40</p>
+<p class="text-emerald-500 text-[10px] font-bold uppercase">Paid</p>
+</div>
+</div>
+<!-- Delivery Item 2 -->
+<div class="bg-card-dark/50 p-4 rounded-xl border border-border-dark flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-border-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-text-muted">check_circle</span>
+</div>
+<div>
+<p class="text-white font-bold">Starbucks</p>
+<p class="text-text-muted text-xs">Completed at 10:45 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-white font-black">$6.15</p>
+<p class="text-emerald-500 text-[10px] font-bold uppercase">Paid</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-card-dark border-t border-border-dark px-6 pb-8 pt-3 flex justify-between items-center z-20">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined filled-icon text-2xl">home</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined text-2xl">payments</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Earnings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined text-2xl">history</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">History</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-text-muted" href="#">
+<span class="material-symbols-outlined text-2xl">account_circle</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>

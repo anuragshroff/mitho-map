@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Location Access</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25f46a",
+                        "background-light": "#f5f8f6",
+                        "background-dark": "#102216",
+                        "glass-surface": "rgba(30, 41, 35, 0.7)",
+                        "glass-border": "rgba(255, 255, 255, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "2xl": "4rem", "full": "9999px" },
+                    backdropBlur: {
+                        'xs': '2px',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar hide for cleaner UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark font-display antialiased text-slate-100 overflow-hidden relative">
+<!-- Background Map Layer -->
+<div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay pointer-events-none">
+<div class="w-full h-full bg-cover bg-center filter grayscale contrast-125 brightness-75" data-alt="Dark stylized aerial city map view" data-location="New York City" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdTSlUzt-IlycpGXDb2qUL_p6MjcUePfDOVmGO-IySAy-58Fb9pdj_KmL5JW4wXO6DIb7r1jYj3d-sKDMZyRt7-FJc0tIj3R2HmTeW9pjiA7rfiuTKkeZCKNBxeI9jWBfHz2McoVx2YAAxr6rRDCGnaZevqPAfH1pYfJkUI0L3momEVYpnDULdvHCZaIYOFHIrMSux29FTOfDPYtwSNKQWgQt2PfRMzcaSSnfL08erEygnZcYLp0C-3w1Gsfbxowzu19ksWx71-4o');">
+</div>
+<!-- Gradient Overlay for smoother integration -->
+<div class="absolute inset-0 bg-gradient-to-b from-[#102216]/90 via-[#102216]/50 to-[#102216]/90"></div>
+</div>
+<!-- Main Content Container -->
+<main class="relative z-10 flex flex-col h-screen w-full max-w-md mx-auto p-6 justify-center items-center">
+<!-- Glass Card -->
+<div class="w-full backdrop-blur-xl bg-glass-surface border border-glass-border shadow-2xl shadow-black/50 rounded-[2.5rem] p-8 flex flex-col items-center text-center relative overflow-hidden group">
+<!-- Decorative Glow behind Icon -->
+<div class="absolute top-12 left-1/2 -translate-x-1/2 w-32 h-32 bg-primary/20 rounded-full blur-[50px] pointer-events-none"></div>
+<!-- Icon -->
+<div class="relative mb-8 bg-[#1b271f] p-6 rounded-full border border-white/5 shadow-inner">
+<span class="material-symbols-outlined text-primary text-[48px] drop-shadow-[0_0_15px_rgba(37,244,106,0.4)]">
+                    location_on
+                </span>
+</div>
+<!-- Text Content -->
+<h1 class="text-3xl font-extrabold text-white mb-4 tracking-tight leading-tight">
+                Set Your Location
+            </h1>
+<p class="text-slate-400 text-base leading-relaxed mb-10 max-w-[280px]">
+                Mitho Map needs access to your location to show you nearby restaurants and ensure accurate food delivery.
+            </p>
+<!-- Actions -->
+<div class="w-full flex flex-col gap-4">
+<!-- Primary Action -->
+<button class="group/btn relative flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 bg-primary transition-all duration-300 active:scale-[0.98] shadow-[0_0_20px_rgba(37,244,106,0.3)] hover:shadow-[0_0_30px_rgba(37,244,106,0.5)]">
+<div class="absolute inset-0 bg-white/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out"></div>
+<span class="material-symbols-outlined mr-2 text-background-dark font-bold text-[20px]">
+                        my_location
+                    </span>
+<span class="relative z-10 text-background-dark text-lg font-bold tracking-wide">Use Current Location</span>
+</button>
+<!-- Secondary Action -->
+<button class="flex w-full cursor-pointer items-center justify-center rounded-full h-14 border border-primary/30 text-primary hover:bg-primary/10 transition-colors duration-300 active:bg-primary/20">
+<span class="text-base font-bold tracking-wide">Select Manually</span>
+</button>
+</div>
+<!-- Footer Link -->
+<button class="mt-6 text-slate-500 text-sm font-medium hover:text-slate-300 transition-colors">
+                Maybe later
+            </button>
+</div>
+</main>
+<!-- iOS Home Indicator Safe Area Simulation (Visual Only) -->
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/20 rounded-full z-20"></div>
+</body></html>

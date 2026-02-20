@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Restaurant Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2460d",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#221410",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<!-- Hero Section with Header -->
+<div class="relative h-[420px] w-full overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Interior of a modern premium restaurant with warm lighting" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAJWL_vDq-gMWn_io8f-XWy45l3UYgaLjNXojx6kBlK9ugXu0sTThZhANtYXYJKDXAYuwOwnbeD-wPbkQogssgFGFC5PNWFpniJ9KYmILbUj5EHjFoRSOb8X5A46rG_rYkImB4IClUfgC0T8L2CO1HVYckdPpqRSis07BV4ALxD3ezZkpqI1yuu-8Dd1RqpjoZnX4qPGsA2AdsV9AjGNQEIqqSLMN1K-Rq0GWctY_GvOiImVz3d6R35weeWqDEOZ-g_0TgtL6jA_Y0');">
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent"></div>
+</div>
+<!-- Top Navigation -->
+<div class="relative flex items-center justify-between p-6 pt-12">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex gap-3">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-md text-white border border-white/30">
+<span class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+<!-- Glassmorphic Info Card -->
+<div class="absolute bottom-6 left-6 right-6">
+<div class="glass p-6 rounded-xl shadow-xl">
+<div class="flex justify-between items-start mb-2">
+<h1 class="text-2xl font-extrabold tracking-tight">The Himalayan Bistro</h1>
+<div class="flex items-center gap-1 bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-bold">
+<span class="material-symbols-outlined text-sm !fill-1">star</span>
+                        4.8
+                    </div>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Authentic Nepalese &amp; Tibetan fusion cuisine</p>
+<div class="flex items-center gap-6 border-t border-slate-200/50 dark:border-slate-700/50 pt-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">schedule</span>
+<span class="text-sm font-semibold">20-30 min</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+<span class="text-sm font-semibold">$$ - $$$</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">distance</span>
+<span class="text-sm font-semibold">1.2 km</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Category Tabs -->
+<div class="sticky top-0 z-20 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-lg border-b border-slate-200 dark:border-slate-800">
+<div class="flex gap-4 p-4 overflow-x-auto hide-scrollbar">
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-primary text-white font-bold text-sm shadow-lg shadow-primary/20">Starters</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-sm border border-slate-200 dark:border-slate-700">Main Course</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-sm border border-slate-200 dark:border-slate-700">Drinks</button>
+<button class="whitespace-nowrap px-6 py-2.5 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-semibold text-sm border border-slate-200 dark:border-slate-700">Desserts</button>
+</div>
+</div>
+<!-- Menu Content -->
+<div class="p-6 space-y-8 pb-32">
+<!-- Category: Starters -->
+<section>
+<h2 class="text-xl font-extrabold mb-4 flex items-center gap-2">
+                Popular Starters
+                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+</h2>
+<div class="grid gap-4">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="h-24 w-24 rounded-lg bg-cover bg-center shrink-0" data-alt="Steamed momo dumplings on a wooden board" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPHkuf1v_TP5k7R9pm1lM1J1CykhqyX0QsZ-_8xUCZsz6emkNdmu7KD44e5VB_IIPFXVmT2waF2EZqF_kC7sqzcmQvKLCxoA8l7PDyjRYP4LLgul62XR51eBQVfXrj_2pb1bJj2VjMBJK_IqkFYjPcxnCuQcYFyZap_by1WoQ8T6O6Ek-QaU8eYlVaCOVOhQG_J0CiyGqbaNp5b3zJdbttPXIKchbvhcb2z4uGOjOGSD4Xwzi1R9w_lcPJznbkcacp16JfEsxAXII');"></div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900 dark:text-white">Crispy Chicken Momos</h3>
+<p class="text-xs text-slate-500 line-clamp-2 mt-1">Deep fried dumplings served with spicy tomato chutney.</p>
+<div class="flex items-center justify-between mt-2">
+<span class="text-primary font-bold">$12.50</span>
+<button class="h-8 w-8 rounded-full bg-primary/10 text-primary flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="h-24 w-24 rounded-lg bg-cover bg-center shrink-0" data-alt="Aloo Chop spiced potato patties" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA4DPzBW2XD3W3tMRbDQb4y0DJXoFbq7u8TBVdTneEQ07epCTUgjZ2g0YTY4Rtqyvb_PwJRnXJyAHLCAHbHsELDS4BVcTDsojVVhFvX1vxvDgXi3l7e0HZCFjd9BuiNYSSBuPP9NH5wr3o1RldL5a7C-MRXInprMb9nE3OEMrQx3ZmIJuv-zLEhu_x62VkjMmJmvd7bT8zkPEi4DDSgCvimyncUi0m78SJyulD8umdPJN9sbjyeWQd49zDn4Hzu0xCMra-OdQKbPFY');"></div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900 dark:text-white">Aloo Chop</h3>
+<p class="text-xs text-slate-500 line-clamp-2 mt-1">Spiced mashed potato patties dipped in gram flour batter.</p>
+<div class="flex items-center justify-between mt-2">
+<span class="text-primary font-bold">$8.00</span>
+<button class="h-8 w-8 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Main Course Preview -->
+<section>
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-xl font-extrabold flex items-center gap-2">
+                    Signature Mains
+                    <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+</h2>
+<button class="text-primary text-sm font-bold">See all</button>
+</div>
+<div class="grid gap-4">
+<!-- Main Item 1 -->
+<div class="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-100 dark:border-slate-800">
+<div class="h-40 w-full bg-cover bg-center" data-alt="Traditional Nepali Thali set with rice and curries" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBPegK0uI82-FgUq1Z3tKXkrMy7ZDDRl3nf1dPDDHNloRK_Ty3OpsrAwTTPbpwVmRu5LXWUFsVaa3NgcDHrk7NMQbBuBnPAw4Bfavp_3HYfKnKK5ErNm2n1w2_tt8ywNvQx3OG7R_PARC3u3C7RC-OAdy3bYbb45Bl-Ff2os79rkO8SRWvxz_f7SDMOE8aHsMBbYLyKEydgCY60j4RaWDddOWNINLjbLmDl4hEwPJEOvYz3KE5BKZ934xYEOAApj1MZg5sQJX1gucA');"></div>
+<div class="p-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-bold text-lg text-slate-900 dark:text-white">Royal Thali Set</h3>
+<p class="text-sm text-slate-500 mt-1">Rice, lentils, seasonal curry, pickles, and yogurt.</p>
+</div>
+<span class="text-primary font-extrabold text-lg">$24.00</span>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex gap-2">
+<span class="text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-green-100 text-green-700 rounded dark:bg-green-900/30 dark:text-green-400">Gluten Free</span>
+<span class="text-[10px] uppercase tracking-wider font-bold px-2 py-1 bg-amber-100 text-amber-700 rounded dark:bg-amber-900/30 dark:text-amber-400">Chef's Choice</span>
+</div>
+<button class="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-full font-bold text-sm shadow-md">
+<span class="material-symbols-outlined text-sm">add</span>
+                                Add to Cart
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category: Drinks -->
+<section>
+<h2 class="text-xl font-extrabold mb-4 flex items-center gap-2">
+                Refreshing Drinks
+                <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Drink 1 -->
+<div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
+<div class="h-32 w-full rounded-lg bg-cover bg-center mb-3" data-alt="Mango lassi in a glass" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0SIu7Vk5P-Sfp08s6hSPmm1aC3R8S1aEnSeUBsNz0F7Myye4jb-071KDNQmwdqulb4mbABFb4gFXEmGV4uroeWoh1W-xdCKdinDam7fI24ph-vziUqWXkzPjvM5KWk51FplX0MjtqbGzrjYurv_omPdf8IgqVU-4e2_EyrszOpryJiZFug6Uc7K3poQKxPg2EQ43WS65er5xRqQ7xBvTetCGIlqcUwsZEfWfz7goDhutUs2hWkgUIt1PJeGSoOBbf93f2kYkmIPc');"></div>
+<h3 class="font-bold text-sm truncate">Mango Lassi</h3>
+<p class="text-primary font-bold mt-1">$6.50</p>
+<button class="mt-2 w-full py-1.5 rounded-full border border-primary/30 text-primary text-xs font-bold hover:bg-primary/5 transition-colors">Add</button>
+</div>
+<!-- Drink 2 -->
+<div class="bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
+<div class="h-32 w-full rounded-lg bg-cover bg-center mb-3" data-alt="Hot Himalayan spice tea" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDmt6dg4tR02U8dIbNlf33-VKCFKKZYnfxZXmAuUkU8B6zKukR5Rdr7fX5M5EP4XFBQ_77wc-2cZA2sQMqK3iAdlg-L4oKL0TPhbEdj4tR-z8rTKhclkDC41vBYlXE5gQ69bgJxUH9d7aBD4uTRXw4j0imUaIYBNvGFxZA3ujCs9PNnPqNlSgwumCRStbK0Ue7Te2GITvn9BDanlhAPvMxQKEdspB_TMQ2H5LVp93HZZqS4h-Jm61-wbx-JRl4aVqjUQUYM8kvr5Zs');"></div>
+<h3 class="font-bold text-sm truncate">Masala Chai</h3>
+<p class="text-primary font-bold mt-1">$4.00</p>
+<button class="mt-2 w-full py-1.5 rounded-full border border-primary/30 text-primary text-xs font-bold hover:bg-primary/5 transition-colors">Add</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Floating View Cart Button -->
+<div class="fixed bottom-8 left-6 right-6 z-50">
+<div class="glass p-3 rounded-full flex items-center justify-between shadow-2xl border-white/50">
+<div class="flex items-center gap-3 ml-2">
+<div class="h-10 w-10 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center relative">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="absolute -top-1 -right-1 h-5 w-5 bg-primary text-white text-[10px] font-bold rounded-full flex items-center justify-center ring-2 ring-white">2</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Total Price</span>
+<span class="font-extrabold text-slate-900">$36.50</span>
+</div>
+</div>
+<button class="bg-primary text-white h-12 px-8 rounded-full font-extrabold text-sm shadow-lg shadow-primary/30 flex items-center gap-2">
+                View Cart
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 -z-10 h-full w-full pointer-events-none">
+<div class="absolute top-1/4 -left-20 h-64 w-64 rounded-full bg-primary/5 blur-3xl"></div>
+<div class="absolute bottom-1/4 -right-20 h-80 w-80 rounded-full bg-primary/5 blur-3xl"></div>
+</div>
+</body></html>

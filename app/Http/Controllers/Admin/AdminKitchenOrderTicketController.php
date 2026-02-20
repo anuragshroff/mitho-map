@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\KitchenOrderTicketStatus;
 use App\Enums\OrderStatus;
+use App\Events\KitchenOrderTicketUpdated;
 use App\Events\OrderStatusUpdated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UpdateAdminKitchenOrderTicketStatusRequest;
@@ -53,6 +54,7 @@ class AdminKitchenOrderTicketController extends Controller
                 return [
                     'id' => $ticket->id,
                     'order_id' => $ticket->order_id,
+                    'restaurant_id' => $ticket->restaurant_id,
                     'status' => $ticket->status?->value,
                     'notes' => $ticket->notes,
                     'accepted_at' => $ticket->accepted_at?->toIso8601String(),
@@ -103,6 +105,7 @@ class AdminKitchenOrderTicketController extends Controller
         }
 
         $kitchenOrderTicket->save();
+        KitchenOrderTicketUpdated::dispatch($kitchenOrderTicket);
 
         $this->syncOrderStatus($request, $kitchenOrderTicket, $status);
 

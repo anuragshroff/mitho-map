@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map - Sign In</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#25f46a",
+              "background-light": "#f5f8f6",
+              "background-dark": "#102216",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            boxShadow: {
+                'neon': '0 0 10px rgba(37, 244, 106, 0.5), 0 0 20px rgba(37, 244, 106, 0.3)',
+            }
+          },
+        },
+      }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        /* Glassmorphism effect */
+        .glass-panel {
+            background: rgba(16, 34, 22, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Custom checkbox styles */
+        .custom-checkbox:checked {
+            background-color: #25f46a;
+            border-color: #25f46a;
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='black' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen relative overflow-hidden flex flex-col items-center justify-center selection:bg-primary selection:text-black">
+<!-- Ambient Background Glows -->
+<div class="fixed top-[-20%] left-[-20%] w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none opacity-40"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none opacity-30"></div>
+<div class="relative w-full max-w-md px-6 py-8 flex flex-col h-full overflow-y-auto">
+<!-- Header Image Area -->
+<div class="w-full flex justify-center mb-8">
+<div class="w-24 h-24 rounded-full bg-gradient-to-tr from-primary/80 to-teal-400 p-[2px] shadow-neon">
+<div class="w-full h-full rounded-full overflow-hidden bg-background-dark border-4 border-background-dark relative">
+<img alt="Delicious healthy salad bowl" class="w-full h-full object-cover" data-alt="Close up of a fresh green salad bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-D3YLQoT6kRyhKbXlUehBmEcdFRxi8QJn00x9OZLBRpWxhevzKB10HJaVrUh6xmjOV8z-fz30dcJnC0DoQl2WwkAq2wNI_rYpkJALSDtwzsat-7H9JHZFcWMohojhJtxXL6gjVN6tRVNCGHbMBexZlzmLDMYACotZo9r8Uv9r7hSNXdHvLUzfqUQptQnPmOoWVaW8oCVCcZvrhk78EJ1hZTSOVwyxsNWb0LHRvvSrPMkDgehWwBYaoBeBdfOuNgDIkdDoVmuvuek"/>
+</div>
+</div>
+</div>
+<!-- Headings -->
+<div class="text-center mb-8">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-2 tracking-tight">Welcome Back!</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base leading-relaxed">
+                Craving something delicious? <br/>Let's get you signed in.
+            </p>
+</div>
+<!-- Social Login Buttons -->
+<div class="flex flex-col gap-3 mb-8 w-full">
+<button class="relative flex w-full items-center justify-center gap-3 rounded-full bg-white text-slate-900 h-14 font-bold text-base hover:bg-slate-100 transition-colors shadow-sm">
+<svg class="w-5 h-5" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.766 12.2764C23.766 11.4607 23.6999 10.6406 23.5588 9.83807H12.24V14.4591H18.7217C18.4528 15.9494 17.5885 17.2678 16.323 18.1056V21.1039H20.19C22.4608 19.0139 23.766 15.9274 23.766 12.2764Z" fill="#4285F4"></path>
+<path d="M12.2401 24.0008C15.4766 24.0008 18.2059 22.9382 20.1945 21.1039L16.3275 18.1055C15.2517 18.8375 13.8627 19.252 12.2445 19.252C9.11388 19.252 6.45946 17.1399 5.50705 14.3003H1.5166V17.3912C3.55371 21.4434 7.7029 24.0008 12.2401 24.0008Z" fill="#34A853"></path>
+<path d="M5.50253 14.3003C5.00236 12.8099 5.00236 11.1961 5.50253 9.70575V6.61481H1.51649C-0.18551 10.0056 -0.18551 14.0004 1.51649 17.3912L5.50253 14.3003Z" fill="#FBBC05"></path>
+<path d="M12.2401 4.74966C13.9509 4.7232 15.6044 5.36697 16.8434 6.54867L20.2695 3.12262C18.1001 1.0855 15.2208 -0.034466 12.2401 0.000808666C7.7029 0.000808666 3.55371 2.55822 1.5166 6.61481L5.50264 9.70575C6.45064 6.86173 9.10947 4.74966 12.2401 4.74966Z" fill="#EA4335"></path>
+</svg>
+                Continue with Google
+            </button>
+<button class="relative flex w-full items-center justify-center gap-3 rounded-full bg-[#1e1e1e] text-white h-14 font-bold text-base border border-slate-700 hover:bg-[#2c2c2c] transition-colors shadow-sm">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.05 20.28c-.98.95-2.05.87-3.08.46-1.07-.45-2.07-.45-3.15.46-1.03.41-2.09.49-3.07-.46-4.25-4.24-3.61-10.27 1.63-10.45 1.34-.02 2.29.61 2.99.61.69 0 1.93-.61 3.25-.56 1.09.03 1.92.29 2.58.74-2.31 1.15-1.92 4.13.38 5.1-.47 1.51-1.12 3-1.53 4.1zm-3.23-14.9c1.65-.08 2.76 1.35 2.66 2.94-1.57.17-2.99-1.37-2.66-2.94z"></path>
+</svg>
+                Continue with Apple
+            </button>
+</div>
+<!-- Divider -->
+<div class="flex items-center gap-4 mb-8">
+<div class="h-[1px] flex-1 bg-slate-200 dark:bg-slate-700"></div>
+<span class="text-sm font-medium text-slate-400 dark:text-slate-500">or sign in with email</span>
+<div class="h-[1px] flex-1 bg-slate-200 dark:bg-slate-700"></div>
+</div>
+<!-- Login Form -->
+<form class="flex flex-col gap-5 w-full">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">mail</span>
+</div>
+<input class="w-full h-14 pl-14 pr-5 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300" placeholder="Enter your email" type="email"/>
+</div>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">lock</span>
+</div>
+<input class="w-full h-14 pl-14 pr-12 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300" placeholder="Enter your password" type="password"/>
+<div class="absolute inset-y-0 right-0 pr-5 flex items-center cursor-pointer">
+<span class="material-symbols-outlined text-slate-400 hover:text-white text-xl">visibility</span>
+</div>
+</div>
+<!-- Utility Row -->
+<div class="flex items-center justify-between px-2">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="w-5 h-5 rounded border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-slate-800 text-primary focus:ring-primary/50 custom-checkbox transition-all" type="checkbox"/>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400 select-none">Remember me</span>
+</label>
+<a class="text-sm font-bold text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors" href="#">
+                    Forgot Password?
+                </a>
+</div>
+<!-- Main Action -->
+<button class="mt-2 w-full h-14 rounded-full bg-primary text-background-dark font-bold text-lg hover:shadow-[0_0_20px_rgba(37,244,106,0.4)] transition-all duration-300 flex items-center justify-center gap-2">
+                Sign In
+                <span class="material-symbols-outlined text-[20px] font-bold">arrow_forward</span>
+</button>
+</form>
+<!-- Footer -->
+<div class="mt-8 text-center pb-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                New to Mitho Map? 
+                <a class="font-bold text-primary hover:underline underline-offset-4 ml-1" href="#">Create Account</a>
+</p>
+</div>
+</div>
+</body></html>

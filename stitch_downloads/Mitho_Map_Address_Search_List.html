@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Address Search</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25f46a",
+                        "primary-dark": "#1bc452",
+                        "background-light": "#f5f8f6",
+                        "background-dark": "#102216",
+                        "surface-dark": "#1a2c20",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "1.5rem", "xl": "2rem", "2xl": "2.5rem", "full": "9999px" },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #25f46a40;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #25f46a80;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-input {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col antialiased selection:bg-primary selection:text-black">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between p-4 pt-6 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-white/5">
+<button class="flex items-center justify-center w-10 h-10 rounded-full text-slate-900 dark:text-white hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold text-slate-900 dark:text-white tracking-tight flex-1 text-center pr-10">
+            Set Delivery Location
+        </h1>
+</header>
+<main class="flex-1 flex flex-col p-4 w-full max-w-md mx-auto space-y-6">
+<!-- Search Section -->
+<div class="space-y-4">
+<!-- Search Input -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400 dark:text-gray-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input autofocus="" class="glass-input block w-full pl-12 pr-4 py-4 rounded-full text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-primary/50 text-base shadow-lg transition-all" placeholder="Search for a new address..." type="text"/>
+</div>
+<!-- Map Button -->
+<button class="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full border border-primary/40 bg-primary/5 text-primary font-semibold hover:bg-primary/10 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]">map</span>
+<span>Select on Map</span>
+</button>
+</div>
+<!-- Saved Places -->
+<section class="space-y-3">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold px-1">Saved Places</h2>
+<div class="space-y-3">
+<!-- Home Item -->
+<div class="glass-card rounded-2xl p-4 flex items-center gap-4 group active:scale-[0.99] transition-transform cursor-pointer hover:bg-white/5">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-[24px]">home</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline justify-between">
+<h3 class="text-slate-900 dark:text-white font-semibold truncate">Home</h3>
+<button class="text-xs font-medium text-primary hover:text-primary-dark ml-2">Edit</button>
+</div>
+<p class="text-sm text-slate-500 dark:text-gray-400 truncate mt-0.5">123 Green Street, Apt 4B</p>
+</div>
+</div>
+<!-- Work Item -->
+<div class="glass-card rounded-2xl p-4 flex items-center gap-4 group active:scale-[0.99] transition-transform cursor-pointer hover:bg-white/5">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20 group-hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary text-[24px]">work</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-baseline justify-between">
+<h3 class="text-slate-900 dark:text-white font-semibold truncate">Work</h3>
+<button class="text-xs font-medium text-primary hover:text-primary-dark ml-2">Edit</button>
+</div>
+<p class="text-sm text-slate-500 dark:text-gray-400 truncate mt-0.5">Tech Plaza, Floor 9</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent History -->
+<section class="space-y-3">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold px-1">Recent History</h2>
+<div class="glass-card rounded-3xl p-1 overflow-hidden">
+<div class="divide-y divide-white/5">
+<!-- History Item 1 -->
+<button class="w-full text-left p-4 flex items-center gap-4 hover:bg-white/5 transition-colors group">
+<div class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors text-[20px]">history</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-slate-900 dark:text-white font-medium truncate">Starbucks Coffee</h3>
+<p class="text-xs text-slate-500 dark:text-gray-500 truncate mt-0.5">45 Main St • 2 mins ago</p>
+</div>
+<span class="material-symbols-outlined text-gray-600 text-[20px] -rotate-45">arrow_forward</span>
+</button>
+<!-- History Item 2 -->
+<button class="w-full text-left p-4 flex items-center gap-4 hover:bg-white/5 transition-colors group">
+<div class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors text-[20px]">history</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-slate-900 dark:text-white font-medium truncate">Central Park West</h3>
+<p class="text-xs text-slate-500 dark:text-gray-500 truncate mt-0.5">New York, NY • Yesterday</p>
+</div>
+<span class="material-symbols-outlined text-gray-600 text-[20px] -rotate-45">arrow_forward</span>
+</button>
+<!-- History Item 3 -->
+<button class="w-full text-left p-4 flex items-center gap-4 hover:bg-white/5 transition-colors group">
+<div class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors text-[20px]">history</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-slate-900 dark:text-white font-medium truncate">Friend's House</h3>
+<p class="text-xs text-slate-500 dark:text-gray-500 truncate mt-0.5">88 Maple Ave • 3 days ago</p>
+</div>
+<span class="material-symbols-outlined text-gray-600 text-[20px] -rotate-45">arrow_forward</span>
+</button>
+<!-- History Item 4 -->
+<button class="w-full text-left p-4 flex items-center gap-4 hover:bg-white/5 transition-colors group">
+<div class="w-10 h-10 rounded-full bg-surface-dark flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-gray-400 group-hover:text-primary transition-colors text-[20px]">history</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="text-slate-900 dark:text-white font-medium truncate">City Gym</h3>
+<p class="text-xs text-slate-500 dark:text-gray-500 truncate mt-0.5">102 Fitness Blvd • Last week</p>
+</div>
+<span class="material-symbols-outlined text-gray-600 text-[20px] -rotate-45">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Use My Current Location Action -->
+<div class="mt-auto py-6">
+<button class="w-full group flex items-center justify-center gap-3 p-4 rounded-xl hover:bg-white/5 transition-colors">
+<div class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[18px]">my_location</span>
+</div>
+<span class="text-primary font-semibold">Use my current location</span>
+</button>
+</div>
+</main>
+</body></html>

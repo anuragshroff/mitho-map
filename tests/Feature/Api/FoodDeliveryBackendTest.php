@@ -263,3 +263,47 @@ it('allows restaurant owner to publish story', function () {
 
     expect(Story::query()->count())->toBe(1);
 });
+
+it('returns live tracking contract fields on order details', function () {
+    $customer = User::factory()->customer()->create();
+    $driver = User::factory()->driver()->create();
+    $restaurantOwner = User::factory()->restaurant()->create();
+    $restaurant = Restaurant::factory()->for($restaurantOwner, 'owner')->create();
+
+    $order = Order::factory()
+        ->for($restaurant, 'restaurant')
+        ->for($customer, 'customer')
+        ->for($driver, 'driver')
+        ->create([
+            'status' => OrderStatus::OutForDelivery->value,
+        ]);
+
+    KitchenOrderTicket::factory()->create([
+        'order_id' => $order->id,
+        'restaurant_id' => $restaurant->id,
+        'status' => KitchenOrderTicketStatus::Ready->value,
+        'accepted_at' => now()->subMinutes(15),
+        'ready_at' => now()->subMinutes(3),
+    ]);
+
+    $order->trackingUpdates()->create([
+        'driver_id' => $driver->id,
+        'latitude' => 28.7041,
+        'longitude' => 77.1025,
+        'heading' => 97,
+        'speed_kmh' => 34.5,
+        'recorded_at' => now(),
+    ]);
+
+    Sanctum::actingAs($customer, ['orders:read']);
+
+    $response = $this->getJson(route('api.v1.orders.show', $order));
+
+    $response
+        ->assertSuccessful()
+        ->assertJsonPath('data.tracking_channel', 'orders.'.$order->id)
+        ->assertJsonPath('data.kitchen_state.status', KitchenOrderTicketStatus::Ready->value)
+        ->assertJsonPath('data.latest_tracking_update.driver_id', $driver->id)
+        ->assertJsonPath('data.live_state.is_out_for_delivery', true)
+        ->assertJsonPath('data.live_state.has_driver', true);
+});

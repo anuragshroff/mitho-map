@@ -26,6 +26,7 @@ class Restaurant extends Model
         'latitude',
         'longitude',
         'is_open',
+        'is_active',
     ];
 
     /**
@@ -35,6 +36,7 @@ class Restaurant extends Model
     {
         return [
             'is_open' => 'boolean',
+            'is_active' => 'boolean',
             'latitude' => 'decimal:7',
             'longitude' => 'decimal:7',
         ];
@@ -68,5 +70,15 @@ class Restaurant extends Model
     public function coupons(): HasMany
     {
         return $this->hasMany(Coupon::class);
+    }
+
+    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function tags(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map - Recovery Method</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#25f46a",
+                        "background-light": "#f5f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom radio styling to hide default input and style the label */
+        .peer:checked ~ .radio-ring {
+            border-color: #25f46a;
+            box-shadow: 0 0 15px rgba(37, 244, 106, 0.2);
+            background-color: rgba(37, 244, 106, 0.05);
+        }
+        .peer:checked ~ .radio-ring .radio-indicator {
+            background-color: #25f46a;
+            border-color: #25f46a;
+        }
+        .peer:checked ~ .radio-ring .icon-container {
+            background-color: #25f46a;
+            color: #102216;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary selection:text-background-dark">
+<div class="relative mx-auto flex h-screen w-full max-w-md flex-col overflow-hidden bg-background-light dark:bg-background-dark shadow-2xl sm:rounded-[3rem] sm:h-[850px] sm:my-10 sm:border-[8px] sm:border-slate-900">
+<!-- Decorative Ambient Glows -->
+<div class="pointer-events-none absolute -left-20 -top-20 h-64 w-64 rounded-full bg-primary/20 blur-[100px]"></div>
+<div class="pointer-events-none absolute -right-20 bottom-20 h-64 w-64 rounded-full bg-primary/10 blur-[80px]"></div>
+<!-- Top Bar -->
+<div class="z-10 flex items-center justify-between p-6 pb-2">
+<button class="group flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white/50 backdrop-blur-md transition-colors hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10">
+<span class="material-symbols-outlined text-slate-900 dark:text-white transition-transform group-hover:-translate-x-0.5">arrow_back</span>
+</button>
+<h2 class="text-lg font-bold"></h2>
+<div class="w-12"></div> <!-- Spacer for balance -->
+</div>
+<!-- Content Scroll Area -->
+<div class="flex flex-1 flex-col px-6 pt-4 pb-8 z-10 overflow-y-auto">
+<!-- Header Text -->
+<div class="mb-8">
+<div class="mb-4 inline-flex items-center justify-center rounded-2xl bg-primary/10 p-4 text-primary backdrop-blur-sm">
+<span class="material-symbols-outlined text-3xl">lock_reset</span>
+</div>
+<h1 class="text-[32px] font-extrabold leading-tight tracking-tight text-slate-900 dark:text-white">
+                    Forgot<br/>Password 🔒
+                </h1>
+<p class="mt-4 text-base font-medium leading-relaxed text-slate-500 dark:text-slate-400">
+                    Don't worry! It happens. Please select the contact details to reset your password.
+                </p>
+</div>
+<!-- Selection Options -->
+<div class="flex flex-col gap-4">
+<!-- Option 1: SMS -->
+<label class="group relative cursor-pointer select-none">
+<input checked="" class="peer sr-only" name="recovery_method" type="radio" value="sms"/>
+<div class="radio-ring relative flex items-center gap-4 rounded-[2rem] border border-slate-200 bg-white/60 p-5 shadow-sm backdrop-blur-md transition-all duration-300 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20">
+<!-- Icon -->
+<div class="icon-container flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-colors duration-300 dark:bg-white/10 dark:text-slate-400">
+<span class="material-symbols-outlined text-2xl">sms</span>
+</div>
+<!-- Text Content -->
+<div class="flex flex-1 flex-col">
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">via SMS</span>
+<span class="mt-0.5 font-display text-base font-bold text-slate-900 dark:text-white tracking-wide">+62 822 •••• •••• 90</span>
+</div>
+<!-- Custom Radio Indicator -->
+<div class="radio-indicator flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-transparent transition-all dark:border-slate-600">
+<span class="material-symbols-outlined text-[14px] text-black opacity-0 transition-opacity peer-checked:opacity-100">check</span>
+</div>
+</div>
+</label>
+<!-- Option 2: Email -->
+<label class="group relative cursor-pointer select-none">
+<input class="peer sr-only" name="recovery_method" type="radio" value="email"/>
+<div class="radio-ring relative flex items-center gap-4 rounded-[2rem] border border-slate-200 bg-white/60 p-5 shadow-sm backdrop-blur-md transition-all duration-300 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20">
+<!-- Icon -->
+<div class="icon-container flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition-colors duration-300 dark:bg-white/10 dark:text-slate-400">
+<span class="material-symbols-outlined text-2xl">mail</span>
+</div>
+<!-- Text Content -->
+<div class="flex flex-1 flex-col">
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">via Email</span>
+<span class="mt-0.5 font-display text-base font-bold text-slate-900 dark:text-white tracking-wide">exam•••@mitho.com</span>
+</div>
+<!-- Custom Radio Indicator -->
+<div class="radio-indicator flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 border-slate-300 bg-transparent transition-all dark:border-slate-600">
+<span class="material-symbols-outlined text-[14px] text-black opacity-0 transition-opacity peer-checked:opacity-100">check</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Bottom Action -->
+<div class="z-20 mt-auto bg-gradient-to-t from-background-light via-background-light to-transparent px-6 pb-8 pt-4 dark:from-background-dark dark:via-background-dark">
+<button class="relative w-full overflow-hidden rounded-full bg-primary py-4 text-base font-bold tracking-wide text-background-dark shadow-[0_0_20px_rgba(37,244,106,0.3)] transition-transform active:scale-[0.98]">
+<span class="relative z-10">Continue</span>
+<div class="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 hover:translate-x-full"></div>
+</button>
+</div>
+<!-- iOS Home Indicator Safe Area -->
+<div class="h-6 w-full bg-background-light dark:bg-background-dark"></div>
+</div>
+</body></html>

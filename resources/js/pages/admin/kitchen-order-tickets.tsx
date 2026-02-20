@@ -1,4 +1,5 @@
-import { Form, Head, Link } from '@inertiajs/react';
+import { Form, Head, Link, router } from '@inertiajs/react';
+import { useEffect, useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -31,6 +32,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 type KitchenOrderTicketRow = {
     id: number;
     order_id: number;
+    restaurant_id: number;
     status: string | null;
     notes: string | null;
     accepted_at: string | null;
@@ -108,12 +110,72 @@ function ticketVariant(status: string | null): 'default' | 'secondary' | 'outlin
     return 'secondary';
 }
 
+type EchoOrderStatusPayload = {
+    order_id?: number;
+    status?: string | null;
+};
+
+type EchoPrivateChannelLike = {
+    listen(event: string, callback: (payload: EchoOrderStatusPayload) => void): void;
+};
+
+type EchoLike = {
+    private(channelName: string): EchoPrivateChannelLike;
+    leave(channelName: string): void;
+};
+
+function getEchoClient(): EchoLike | null {
+    if (typeof window === 'undefined') {
+        return null;
+    }
+
+    const maybeEcho = (window as Window & { Echo?: EchoLike }).Echo;
+
+    return maybeEcho ?? null;
+}
+
 export default function AdminKitchenOrderTickets({
     kitchenOrderTickets,
     statusCounts,
     statusOptions,
     filters,
 }: KitchenOrderTicketsProps) {
+    const restaurantIds = useMemo<number[]>(() => {
+        return [...new Set(kitchenOrderTickets.data.map((ticket) => ticket.restaurant_id))];
+    }, [kitchenOrderTickets.data]);
+
+    useEffect(() => {
+        const echo = getEchoClient();
+
+        if (echo !== null) {
+            restaurantIds.forEach((restaurantId) => {
+                const channel = echo.private(`restaurants.${restaurantId}`);
+
+                channel.listen('.kitchen.order.ticket.updated', () => {
+                    router.reload({
+                        only: ['kitchenOrderTickets', 'statusCounts'],
+                    });
+                });
+            });
+
+            return () => {
+                restaurantIds.forEach((restaurantId) => {
+                    echo.leave(`restaurants.${restaurantId}`);
+                });
+            };
+        }
+
+        const intervalId = window.setInterval(() => {
+            router.reload({
+                only: ['kitchenOrderTickets', 'statusCounts'],
+            });
+        }, 8000);
+
+        return () => {
+            window.clearInterval(intervalId);
+        };
+    }, [restaurantIds]);
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Admin kitchen tickets" />
@@ -239,6 +301,54 @@ export default function AdminKitchenOrderTickets({
                                         Update Ticket
                                     </Button>
                                 </Form>
+
+                                <div className="flex flex-wrap gap-2">
+                                    <Form
+                                        action={
+                                            adminKitchenOrderTicketsUpdateStatus({
+                                                kitchenOrderTicket: ticket.id,
+                                            }).url
+                                        }
+                                        method="patch"
+                                        options={{ preserveScroll: true }}
+                                    >
+                                        <input type="hidden" name="status" value="accepted" />
+                                        <input type="hidden" name="notes" value="Accepted from live controls." />
+                                        <Button type="submit" size="sm" variant="secondary">
+                                            Accept
+                                        </Button>
+                                    </Form>
+                                    <Form
+                                        action={
+                                            adminKitchenOrderTicketsUpdateStatus({
+                                                kitchenOrderTicket: ticket.id,
+                                            }).url
+                                        }
+                                        method="patch"
+                                        options={{ preserveScroll: true }}
+                                    >
+                                        <input type="hidden" name="status" value="in_preparation" />
+                                        <input type="hidden" name="notes" value="Moved to preparing from live controls." />
+                                        <Button type="submit" size="sm" variant="secondary">
+                                            Prepare
+                                        </Button>
+                                    </Form>
+                                    <Form
+                                        action={
+                                            adminKitchenOrderTicketsUpdateStatus({
+                                                kitchenOrderTicket: ticket.id,
+                                            }).url
+                                        }
+                                        method="patch"
+                                        options={{ preserveScroll: true }}
+                                    >
+                                        <input type="hidden" name="status" value="ready" />
+                                        <input type="hidden" name="notes" value="Marked ready from live controls." />
+                                        <Button type="submit" size="sm" variant="secondary">
+                                            Ready
+                                        </Button>
+                                    </Form>
+                                </div>
                             </div>
                         ))}
                     </CardContent>

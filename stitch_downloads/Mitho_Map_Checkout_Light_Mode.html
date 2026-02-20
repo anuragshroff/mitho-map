@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2460d",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#221410",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .bg-mesh {
+            background-color: #f8f6f5;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(242, 70, 13, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(242, 70, 13, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(242, 70, 13, 0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(242, 70, 13, 0.05) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-mesh min-h-screen text-slate-900 selection:bg-primary/30">
+<div class="max-w-md mx-auto min-h-screen flex flex-col relative pb-32">
+<!-- Header -->
+<header class="sticky top-0 z-50 glass-card px-4 py-4 flex items-center justify-between mb-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-slate-900">
+<span class="material-symbols-outlined">arrow_back_ios_new</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">Checkout</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-slate-900">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</header>
+<main class="px-4 space-y-6 overflow-y-auto">
+<!-- Delivery Address Section -->
+<section class="space-y-3">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold">Delivery Address</h2>
+</div>
+<div class="glass-card rounded-xl p-4 flex gap-4 shadow-sm relative overflow-hidden">
+<div class="flex-1 space-y-2 z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">home</span>
+<p class="text-base font-bold leading-tight">Home</p>
+</div>
+<p class="text-slate-600 text-sm font-medium leading-relaxed">Sanepa-2, Lalitpur<br/>Near the Yellow House, Kathmandu</p>
+<div class="flex items-center gap-2 pt-1">
+<span class="material-symbols-outlined text-emerald-500 text-xs">schedule</span>
+<span class="text-xs font-semibold text-emerald-600 uppercase tracking-wider">Delivering in 25-30 mins</span>
+</div>
+<button class="mt-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold flex items-center gap-1 w-fit hover:bg-primary/20 transition-colors">
+                            Change
+                            <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="w-24 h-24 rounded-lg overflow-hidden shrink-0 border border-white shadow-sm">
+<img alt="Map location view" class="w-full h-full object-cover" data-alt="Miniature map view of Sanepa area" data-location="Lalitpur, Nepal" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAux9OrAfFz0sP3euriB-MurSRImkV-UIEsp2buQH_4uLMb_cOGJOyo-fMYKTZ-7mYc7MFfkTvMxHtPWBrkVEwCe8dhO-nRbj0a-SDWc5_3GyirNl3sZUojLBkVn9ceKAfrp994WF3FWVetQGK8jWIUxUqYokIfAJj6g-V1Xq-l8GJ7Xg7k4rI2lhX3GbimjPL6ho9mAPruVDSGFmq5sfKrQ0-ut-J_wfwTBrPE10kLFajOCjjh_CMdJyTpqDf_y4aQBKGfDEkqDJg"/>
+</div>
+</div>
+</section>
+<!-- Order Summary Section -->
+<section class="space-y-3">
+<h2 class="text-xl font-bold">Order Summary</h2>
+<div class="glass-card rounded-xl p-4 space-y-4 shadow-sm">
+<!-- Items -->
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-background-light">
+<img alt="Steamed Momos" class="w-full h-full object-cover" data-alt="Traditional steamed chicken momo plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhmo3hmKye_P9YetUXzSrGMdpRdkAFf10gSlKhh1vvGAy78Ztj2jHCt5dTaAU1KY1aMEJ4iGzaFls9oX8ZlZVH5-x9jh5DvscOcrKoZRRzE0aJ92eVfBVfKr7jHz7czK6p_46oIXZewZvIbRWPIeb3eIwc4ZJQQG3IqmuKK5rRX7UGbvhI2Q1K1oNS2d8NTgMGKml1QOHctXkAAVhIvBGYvP44X5TY8HkauEGJUEsCW84VCmo4NO37sGoVXDAH6WZ3SgP_G716swg"/>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900">C. Momo (Steamed)</h3>
+<p class="text-xs text-slate-500 font-medium">Extra Spicy Chutney</p>
+</div>
+<div class="text-right">
+<p class="font-bold">2 × Rs. 350</p>
+<p class="text-primary text-sm font-bold">Rs. 700</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-background-light">
+<img alt="Thakali Set" class="w-full h-full object-cover" data-alt="Traditional Nepali Thakali dinner set" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkpedqpp1BkTIKCu4KXVOu1NOlmO9RBnewLohBTRuBsNZUQ-jNwKvmXPEih7zhUycg_O_rjgEuKrZp1NzRocolxdLoucmg2BNU_GRZWptKj2e9WdHaF_En7hqHoTCX4_5qzR7PLw191cvFf_taRrvARFPtOdV5cKEYk514o3111SB9MPxwdzVhUGVC6Jz8ou2sxAx2L4xg0F9KC62lA8o3u61cFxkQkG3P9koLCUretiaUD01Syt-mPZ54WOYQHV82n8jqBA-8VX8"/>
+</div>
+<div class="flex-1">
+<h3 class="font-bold text-slate-900">Thakali Set (Mutton)</h3>
+<p class="text-xs text-slate-500 font-medium">Standard Portion</p>
+</div>
+<div class="text-right">
+<p class="font-bold">1 × Rs. 850</p>
+<p class="text-primary text-sm font-bold">Rs. 850</p>
+</div>
+</div>
+<div class="border-t border-slate-200/50 pt-4 space-y-2">
+<div class="flex justify-between text-sm text-slate-600 font-medium">
+<span>Subtotal</span>
+<span>Rs. 1550</span>
+</div>
+<div class="flex justify-between text-sm text-slate-600 font-medium">
+<span>Delivery Fee</span>
+<span class="text-emerald-600 font-bold">FREE</span>
+</div>
+<div class="flex justify-between text-sm text-slate-600 font-medium">
+<span>Service Tax (13%)</span>
+<span>Rs. 201.5</span>
+</div>
+<div class="flex justify-between pt-2 border-t border-dashed border-slate-300">
+<span class="text-lg font-bold">Grand Total</span>
+<span class="text-xl font-extrabold text-primary">Rs. 1751.5</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Coupon Code Section -->
+<section class="space-y-3">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">loyalty</span>
+</div>
+<input class="w-full h-14 pl-12 pr-28 rounded-full border-none glass-card focus:ring-2 focus:ring-primary/20 placeholder:text-slate-400 font-medium shadow-sm" placeholder="Enter coupon code" type="text"/>
+<button class="absolute right-2 top-2 bottom-2 px-6 rounded-full bg-primary text-white font-bold text-sm shadow-lg shadow-primary/30 active:scale-95 transition-transform">
+                        Apply
+                    </button>
+</div>
+</section>
+<!-- Payment Method Section -->
+<section class="space-y-3">
+<h2 class="text-xl font-bold">Payment Method</h2>
+<div class="grid grid-cols-1 gap-3">
+<!-- eSewa Option -->
+<label class="relative flex items-center p-4 rounded-xl glass-card cursor-pointer border-2 border-transparent has-[:checked]:border-primary transition-all">
+<input checked="" class="hidden peer" name="payment" type="radio"/>
+<div class="w-12 h-12 rounded-lg bg-[#60bb46]/10 flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-[#60bb46] text-3xl">account_balance_wallet</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-slate-900">eSewa Wallet</p>
+<p class="text-xs text-slate-500 font-medium">Instant Payment</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-slate-300 peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+<!-- Khalti Option -->
+<label class="relative flex items-center p-4 rounded-xl glass-card cursor-pointer border-2 border-transparent has-[:checked]:border-primary transition-all">
+<input class="hidden peer" name="payment" type="radio"/>
+<div class="w-12 h-12 rounded-lg bg-[#5c2d91]/10 flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-[#5c2d91] text-3xl">wallet</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-slate-900">Khalti Wallet</p>
+<p class="text-xs text-slate-500 font-medium">Digital payment made easy</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-slate-300 peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+<!-- Cash on Delivery Option -->
+<label class="relative flex items-center p-4 rounded-xl glass-card cursor-pointer border-2 border-transparent has-[:checked]:border-primary transition-all">
+<input class="hidden peer" name="payment" type="radio"/>
+<div class="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-slate-600 text-3xl">payments</span>
+</div>
+<div class="flex-1">
+<p class="font-bold text-slate-900">Cash on Delivery</p>
+<p class="text-xs text-slate-500 font-medium">Pay when you receive</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-slate-300 peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100"></div>
+</div>
+</label>
+</div>
+</section>
+</main>
+<!-- Fixed Footer Action -->
+<div class="fixed bottom-0 left-0 right-0 p-6 glass-card border-t-0 rounded-t-xl z-[60] max-w-md mx-auto shadow-[0_-8px_30px_rgba(0,0,0,0.05)]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex flex-col">
+<span class="text-xs text-slate-500 font-bold uppercase tracking-widest">Total Payable</span>
+<span class="text-2xl font-black text-slate-900">Rs. 1751.50</span>
+</div>
+<div class="text-right">
+<span class="text-xs text-primary font-bold bg-primary/10 px-2 py-1 rounded-full">Save Rs. 50 today</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-4 rounded-full font-bold text-lg shadow-xl shadow-primary/40 hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                Place Order
+                <span class="material-symbols-outlined">rocket_launch</span>
+</button>
+<!-- iOS Home Indicator Spacing -->
+<div class="h-4"></div>
+</div>
+<!-- Bottom Nav Imitation -->
+<div class="fixed bottom-0 w-full max-w-md bg-white/10 backdrop-blur-md border-t border-white/20 hidden">
+<!-- Nav content from list if needed, but sticky footer takes priority for checkout -->
+</div>
+</div>
+</body></html>

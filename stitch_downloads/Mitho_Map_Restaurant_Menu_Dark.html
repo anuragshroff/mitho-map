@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mitho Map Restaurant Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2460d",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#120a08",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-dark {
+            background: rgba(18, 10, 8, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<!-- Sticky Top Bar -->
+<div class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 glass-dark">
+<button class="flex size-10 items-center justify-center rounded-full glass text-slate-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="text-sm font-bold tracking-tight">The Gourmet Kitchen</h1>
+<p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Italian Excellence</p>
+</div>
+<button class="flex size-10 items-center justify-center rounded-full glass text-slate-100">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<!-- Hero Section -->
+<div class="relative w-full h-[45vh] overflow-hidden">
+<img alt="Restaurant interior" class="w-full h-full object-cover" data-alt="Interior of a luxury Italian restaurant with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdSsAkhRsklvupzmvE4Z9L7CGJKCvFocVKUXT2EiwLLjvtdjlVMgFsx10KLSg0lkTMLEqWj0pitslh2qtYkYLNYtgJJqpQ2ktDz3jGjJnpwG6GxrFHKAKF8Yr8yVsv_4bc-OeTrsg6rm9jdYJ8V2r7UEGJYEHEOe5g4r0uUxcsUkzJVM40sEklgHKpZK8qi_QAJo6uYq-fa40H_IxiKs6C_WgLhkSoNjJQx40PO62Zm6Jjz6Uizaz7IHMXbV6BDkStw--ygDCuB94"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent"></div>
+<!-- Restaurant Info Floating Card -->
+<div class="absolute bottom-6 left-4 right-4 glass rounded-xl p-4 flex flex-col gap-2">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-2xl font-bold text-white">The Gourmet Kitchen</h2>
+<p class="text-slate-300 text-sm">Via della Conciliazione, Rome</p>
+</div>
+<div class="bg-primary/20 text-primary px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="font-bold text-sm">4.8</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mt-1 border-t border-white/10 pt-3">
+<div class="flex items-center gap-1 text-slate-300 text-xs">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>20-30 min</span>
+</div>
+<div class="flex items-center gap-1 text-slate-300 text-xs">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span>$$$ • Delivery Free</span>
+</div>
+<div class="flex items-center gap-1 text-slate-300 text-xs">
+<span class="material-symbols-outlined text-sm">info</span>
+<span>Info</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Category Tabs (Sticky) -->
+<div class="sticky top-[72px] z-40 bg-background-dark/95 backdrop-blur-md border-b border-white/5">
+<div class="flex gap-4 px-4 overflow-x-auto hide-scrollbar py-4">
+<a class="flex-none px-4 py-2 rounded-full bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20" href="#">Starters</a>
+<a class="flex-none px-4 py-2 rounded-full glass text-slate-400 text-sm font-medium" href="#">Main Course</a>
+<a class="flex-none px-4 py-2 rounded-full glass text-slate-400 text-sm font-medium" href="#">Pasta</a>
+<a class="flex-none px-4 py-2 rounded-full glass text-slate-400 text-sm font-medium" href="#">Desserts</a>
+<a class="flex-none px-4 py-2 rounded-full glass text-slate-400 text-sm font-medium" href="#">Drinks</a>
+</div>
+</div>
+<!-- Menu List -->
+<div class="px-4 pb-32 space-y-6 mt-6">
+<section>
+<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="w-1 h-6 bg-primary rounded-full"></span>
+                Starters
+            </h3>
+<div class="space-y-4">
+<!-- Menu Item 1 -->
+<div class="glass p-3 rounded-xl flex gap-4 items-center">
+<div class="relative size-24 shrink-0 rounded-lg overflow-hidden">
+<img alt="Bruschetta" class="w-full h-full object-cover" data-alt="Toasted Italian bread topped with fresh tomatoes and basil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIhKSZ8dpxefkr2uQgbfr6UgyOREY6rubECfelhUEm6w7lfnhKe3At4rqwuwGkjlyNJzOCSMAp9BVfpWPQgZwMnvkolHKO47BvsZQzgazOofYlsgOjVfGbtZQrrR00vk8ffG_NwknVM-VRMXE3IQm7aHdJMfMNNx54fXuCYZwAwa70QMzvZbDLQTUYADBcJLa8k1s_7On1h-cWIk8LqmuSRER7vTu2nquaGWchWqaBb9TV5ZdvBbge9OrzPDErulqVVDFSmHFAHLo"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-white truncate">Classic Bruschetta</h4>
+<p class="text-xs text-slate-400 line-clamp-2 mt-1">Toasted rustic bread topped with tomatoes, basil, garlic, and extra virgin olive oil.</p>
+<div class="flex justify-between items-center mt-3">
+<span class="text-primary font-bold text-lg">$12.50</span>
+<button class="bg-primary text-white size-8 rounded-lg flex items-center justify-center shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Menu Item 2 -->
+<div class="glass p-3 rounded-xl flex gap-4 items-center">
+<div class="relative size-24 shrink-0 rounded-lg overflow-hidden">
+<img alt="Burrata" class="w-full h-full object-cover" data-alt="Fresh burrata cheese with cherry tomatoes and pesto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUqqhY0CJoyzEXQ4frZURHI7sPB9t3ZY3PTfFpRw7sY39PAm1lif6BJ_z59IIxJx2ugAxK7jH1tKSHUvX8JnWduJaEb7YOT0toJryasY7ifFX1A98u1TkRJ0orkGegosKCCqiTdGTfn32Jltazf_887d_d7fSwxO7e0Y3KpA56nEkKj6GDzDP-D8a3AckjRcQJKpHm8s23_nWMuqMlbhR3b0CfnDPIE9EuJvJBH7SXKcpRPao8CnJVfRAmEEtnrGMDAUBJZ6HE9oM"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-white truncate">Burrata &amp; Prosciutto</h4>
+<p class="text-xs text-slate-400 line-clamp-2 mt-1">Creamy burrata cheese served with 24-month aged Parma ham and arugula.</p>
+<div class="flex justify-between items-center mt-3">
+<span class="text-primary font-bold text-lg">$18.00</span>
+<button class="bg-primary text-white size-8 rounded-lg flex items-center justify-center shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Menu Item 3 -->
+<div class="glass p-3 rounded-xl flex gap-4 items-center">
+<div class="relative size-24 shrink-0 rounded-lg overflow-hidden">
+<img alt="Calamari" class="w-full h-full object-cover" data-alt="Golden fried calamari rings with lemon slice" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-WACb7Ke9L5p0nEEqKY8p4Ws-RT6-xa3b-XKlhgaVruDr75-vnDmtyDyAHqeItWB-cGDuoPCj56DKcZGuBScr9kPNEzcuNaqY0_JwNSSy3LDo8dIMp-5QL3uXakRYBeEBhzeZ12cX1BcmhCBzQ_ske41dcbdf-9DyldRgzPiCRhrJkMl7d9Kzu2ABc4Xy60oAmwUkASY3SiyNetiXRCHOq4WYN3NkVA13Ng2IbTu2WYp2G7rdgMfok8fPS6DbJ7s-KZM64Jc-F2w"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-white truncate">Calamari Fritti</h4>
+<p class="text-xs text-slate-400 line-clamp-2 mt-1">Lightly floured and fried squid served with a spicy marinara dipping sauce.</p>
+<div class="flex justify-between items-center mt-3">
+<span class="text-primary font-bold text-lg">$15.50</span>
+<button class="bg-primary text-white size-8 rounded-lg flex items-center justify-center shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+<span class="w-1 h-6 bg-primary rounded-full"></span>
+                Main Course
+            </h3>
+<div class="space-y-4">
+<div class="glass p-3 rounded-xl flex gap-4 items-center">
+<div class="relative size-24 shrink-0 rounded-lg overflow-hidden">
+<img alt="Pasta" class="w-full h-full object-cover" data-alt="Gourmet pasta dish with green herbs and cheese" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb_eLzAyDmtKSAieu5hyzt2pD47n5HWfNMC8enKnQD0fiL9px5dRr4NNh9hPctpf_NgAll6p86f-eMYKAwE3W14wsGlfByZYkmDiTgPmSJt94AjhNqIi6z37oyfJ0P30jRmqgnvLiHqSNVNHWts7cLX6KcZw2rStc7xr7VUzLZSwBwL6F1RcP2J4b59PujQXiAmb8JvQ0wZZgCtdRsFrua70KqviXX2fey0g9xan--Kn-ZPZ5swaEvakhIGhT1IWN0GID3sXpvkg8"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-bold text-white truncate">Truffle Tagliatelle</h4>
+<p class="text-xs text-slate-400 line-clamp-2 mt-1">Handmade pasta tossed in a creamy black truffle butter sauce and parmesan.</p>
+<div class="flex justify-between items-center mt-3">
+<span class="text-primary font-bold text-lg">$28.00</span>
+<button class="bg-primary text-white size-8 rounded-lg flex items-center justify-center shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-xl">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Floating View Cart Button -->
+<div class="fixed bottom-0 left-0 right-0 p-4 pb-8 glass-dark z-50">
+<button class="w-full bg-primary hover:bg-primary/90 text-white rounded-xl h-14 px-6 flex items-center justify-between shadow-xl shadow-primary/20 active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-3">
+<div class="bg-white/20 px-2 py-1 rounded text-xs font-bold">2 ITEMS</div>
+<span class="font-bold text-lg">View Cart</span>
+</div>
+<span class="font-bold text-lg">$40.50</span>
+</button>
+</div>
+</body></html>
