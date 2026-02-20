@@ -21,6 +21,8 @@ class Order extends Model
         'customer_id',
         'restaurant_id',
         'driver_id',
+        'assigned_by',
+        'assigned_at',
         'coupon_id',
         'status',
         'subtotal_cents',
@@ -40,6 +42,7 @@ class Order extends Model
     {
         return [
             'status' => OrderStatus::class,
+            'assigned_at' => 'datetime',
             'placed_at' => 'datetime',
             'delivered_at' => 'datetime',
         ];
@@ -58,6 +61,11 @@ class Order extends Model
     public function driver(): BelongsTo
     {
         return $this->belongsTo(User::class, 'driver_id');
+    }
+
+    public function assignedBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'assigned_by');
     }
 
     public function coupon(): BelongsTo
@@ -83,5 +91,15 @@ class Order extends Model
     public function trackingUpdates(): HasMany
     {
         return $this->hasMany(DeliveryTrackingUpdate::class)->orderByDesc('recorded_at');
+    }
+
+    public function conversations(): HasMany
+    {
+        return $this->hasMany(OrderConversation::class);
+    }
+
+    public function chatMessages(): HasMany
+    {
+        return $this->hasMany(OrderChatMessage::class)->orderBy('id');
     }
 }

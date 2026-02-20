@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Enums\UserRole;
+use App\Concerns\ResolvesApiTokenAbilities;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\StoreApiTokenRequest;
 use App\Models\User;
@@ -14,6 +14,8 @@ use Illuminate\Validation\ValidationException;
 
 class AuthTokenController extends Controller
 {
+    use ResolvesApiTokenAbilities;
+
     /**
      * @throws ValidationException
      */
@@ -60,19 +62,5 @@ class AuthTokenController extends Controller
         }
 
         return response()->noContent();
-    }
-
-    /**
-     * @return array<int, string>
-     */
-    protected function resolveAbilitiesForUser(User $user): array
-    {
-        return match ($user->role) {
-            UserRole::Customer => ['orders:read', 'orders:write', 'stories:read'],
-            UserRole::Restaurant => ['orders:read', 'orders:write', 'kot:write', 'stories:read', 'stories:write'],
-            UserRole::Driver => ['orders:read', 'orders:write', 'tracking:write'],
-            UserRole::Admin => ['*'],
-            default => [],
-        };
     }
 }

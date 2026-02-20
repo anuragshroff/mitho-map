@@ -13,6 +13,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -71,12 +72,21 @@ class AdminOrderController extends Controller
 
         $drivers = User::query()
             ->where('role', UserRole::Driver)
+            ->withCount([
+                'deliveries as active_assignments_count' => function ($orderQuery): void {
+                    $orderQuery->whereIn('status', $this->activeAssignmentStatuses());
+                },
+            ])
             ->orderBy('name')
             ->get(['id', 'name'])
             ->map(function (User $driver): array {
+                $maxAssignments = max((int) config('food.driver_max_active_assignments', 1), 1);
+
                 return [
                     'id' => $driver->id,
                     'name' => $driver->name,
+                    'active_assignments_count' => (int) $driver->active_assignments_count,
+                    'is_available' => (int) $driver->active_assignments_count < $maxAssignments,
                 ];
             })
             ->values()
@@ -87,6 +97,7 @@ class AdminOrderController extends Controller
             'statusCounts' => $statusCounts,
             'statusOptions' => $this->statusValues(),
             'drivers' => $drivers,
+            'driverAssignmentLimit' => max((int) config('food.driver_max_active_assignments', 1), 1),
             'filters' => [
                 'search' => $search,
                 'status' => $status,
@@ -143,7 +154,25 @@ class AdminOrderController extends Controller
             return back();
         }
 
+        if ($driverId !== null) {
+            $activeAssignments = Order::query()
+                ->whereKeyNot($order->id)
+                ->where('driver_id', $driverId)
+                ->whereIn('status', $this->activeAssignmentStatuses())
+                ->count();
+
+            $maxAssignments = max((int) config('food.driver_max_active_assignments', 1), 1);
+
+            if ($activeAssignments >= $maxAssignments) {
+                throw ValidationException::withMessages([
+                    'driver_id' => 'Driver has reached maximum active assignments.',
+                ]);
+            }
+        }
+
         $order->driver_id = $driverId;
+        $order->assigned_by = $driverId === null ? null : $request->user()?->id;
+        $order->assigned_at = $driverId === null ? null : now();
         $order->save();
 
         $order->statusHistories()->create([
@@ -199,5 +228,19 @@ class AdminOrderController extends Controller
         }
 
         $ticket->save();
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    protected function activeAssignmentStatuses(): array
+    {
+        return [
+            OrderStatus::Pending->value,
+            OrderStatus::Confirmed->value,
+            OrderStatus::Preparing->value,
+            OrderStatus::ReadyForPickup->value,
+            OrderStatus::OutForDelivery->value,
+        ];
     }
 }

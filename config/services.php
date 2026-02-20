@@ -35,4 +35,21 @@ return [
         ],
     ],
 
+    'whatsapp' => [
+        'driver' => env('WHATSAPP_DRIVER', 'log'),
+        'webhook_url' => env('WHATSAPP_WEBHOOK_URL'),
+        'token' => env('WHATSAPP_TOKEN'),
+        'from' => env('WHATSAPP_FROM', 'Mitho Map'),
+        'timeout' => env('WHATSAPP_TIMEOUT', 10),
+        'verification_ttl_minutes' => env('WHATSAPP_VERIFICATION_TTL_MINUTES', 10),
+        'verification_max_attempts' => env('WHATSAPP_VERIFICATION_MAX_ATTEMPTS', 5),
+    ],
+
+    'apple' => [
+        'client_ids' => array_values(array_filter(array_map(
+            static fn (string $value): string => trim($value),
+            explode(',', (string) env('APPLE_CLIENT_IDS', env('APPLE_CLIENT_ID', '')))
+        ))),
+    ],
+
 ];

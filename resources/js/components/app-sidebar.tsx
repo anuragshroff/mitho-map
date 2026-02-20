@@ -2,13 +2,16 @@ import { Link, usePage } from '@inertiajs/react';
 import {
     BookOpen,
     Building2,
+    Calculator,
     CircleUserRound,
     ClipboardList,
     Folder,
+    Image,
     LayoutGrid,
     Percent,
     ShoppingBag,
     Store,
+    Tag,
     Tv,
     UtensilsCrossed,
 } from 'lucide-react';
@@ -25,11 +28,13 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard } from '@/routes';
 import { dashboard as adminDashboard } from '@/routes/admin';
+import { index as adminBannersIndex } from '@/routes/admin/banners';
 import { index as adminCouponsIndex } from '@/routes/admin/coupons';
 import { index as adminKitchenOrderTicketsIndex } from '@/routes/admin/kitchen-order-tickets';
 import { index as adminMenuItemsIndex } from '@/routes/admin/menu-items';
 import { index as adminOrdersIndex } from '@/routes/admin/orders';
 import { index as adminRestaurantsIndex } from '@/routes/admin/restaurants';
+import { index as adminSpecialOffersIndex } from '@/routes/admin/special-offers';
 import { index as adminStoriesIndex } from '@/routes/admin/stories';
 import { index as adminUsersIndex } from '@/routes/admin/users';
 import type { NavItem, SharedData } from '@/types';
@@ -76,6 +81,16 @@ const adminNavItems: NavItem[] = [
         icon: Tv,
     },
     {
+        title: 'Banners',
+        href: adminBannersIndex(),
+        icon: Image,
+    },
+    {
+        title: 'Special Offers',
+        href: adminSpecialOffersIndex(),
+        icon: Tag,
+    },
+    {
         title: 'Coupons',
         href: adminCouponsIndex(),
         icon: Percent,
@@ -84,6 +99,11 @@ const adminNavItems: NavItem[] = [
         title: 'Users',
         href: adminUsersIndex(),
         icon: CircleUserRound,
+    },
+    {
+        title: 'POS',
+        href: '/admin/pos',
+        icon: Calculator,
     },
 ];
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminKitchenOrderTicketController;
 use App\Http\Controllers\Admin\AdminMenuItemController;
 use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\Admin\AdminPosController;
 use App\Http\Controllers\Admin\AdminRestaurantController;
 use App\Http\Controllers\Admin\AdminStoryController;
 use App\Http\Controllers\Admin\AdminUserController;
@@ -56,6 +57,20 @@ Route::middleware(['auth', 'verified', 'admin'])
         Route::delete('stories/{story}', [AdminStoryController::class, 'destroy'])
             ->name('stories.destroy');
 
+        Route::get('banners', [\App\Http\Controllers\Admin\AdminBannerController::class, 'index'])->name('banners.index');
+        Route::post('banners', [\App\Http\Controllers\Admin\AdminBannerController::class, 'store'])->name('banners.store');
+        Route::patch('banners/{banner}', [\App\Http\Controllers\Admin\AdminBannerController::class, 'update'])->name('banners.update');
+        Route::patch('banners/{banner}/status', [\App\Http\Controllers\Admin\AdminBannerController::class, 'updateStatus'])
+            ->name('banners.update-status');
+        Route::delete('banners/{banner}', [\App\Http\Controllers\Admin\AdminBannerController::class, 'destroy'])->name('banners.destroy');
+
+        Route::get('special-offers', [\App\Http\Controllers\Admin\AdminSpecialOfferController::class, 'index'])->name('special-offers.index');
+        Route::post('special-offers', [\App\Http\Controllers\Admin\AdminSpecialOfferController::class, 'store'])->name('special-offers.store');
+        Route::patch('special-offers/{specialOffer}', [\App\Http\Controllers\Admin\AdminSpecialOfferController::class, 'update'])->name('special-offers.update');
+        Route::patch('special-offers/{specialOffer}/status', [\App\Http\Controllers\Admin\AdminSpecialOfferController::class, 'updateStatus'])
+            ->name('special-offers.update-status');
+        Route::delete('special-offers/{specialOffer}', [\App\Http\Controllers\Admin\AdminSpecialOfferController::class, 'destroy'])->name('special-offers.destroy');
+
         Route::get('coupons', [AdminCouponController::class, 'index'])->name('coupons.index');
         Route::post('coupons', [AdminCouponController::class, 'store'])->name('coupons.store');
         Route::patch('coupons/{coupon}', [AdminCouponController::class, 'update'])->name('coupons.update');
@@ -66,6 +81,9 @@ Route::middleware(['auth', 'verified', 'admin'])
         Route::get('users', [AdminUserController::class, 'index'])->name('users.index');
         Route::patch('users/{user}/role', [AdminUserController::class, 'updateRole'])
             ->name('users.update-role');
+
+        Route::get('pos', [AdminPosController::class, 'index'])->name('pos.index');
+        Route::post('pos', [AdminPosController::class, 'store'])->name('pos.store');
     });
 
 require __DIR__.'/settings.php';
