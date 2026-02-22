@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use App\Enums\UserRole;
+use App\Enums\VehicleType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -28,6 +31,9 @@ class User extends Authenticatable
         'password',
         'role',
         'phone_verified_at',
+        'vehicle_type',
+        'is_available',
+        'expo_push_token',
     ];
 
     /**
@@ -54,6 +60,8 @@ class User extends Authenticatable
             'phone_verified_at' => 'datetime',
             'password' => 'hashed',
             'role' => UserRole::class,
+            'vehicle_type' => VehicleType::class,
+            'is_available' => 'boolean',
             'two_factor_confirmed_at' => 'datetime',
         ];
     }
@@ -93,6 +101,12 @@ class User extends Authenticatable
         return $this->hasMany(DeliveryTrackingUpdate::class, 'driver_id');
     }
 
+    public function latestTrackingUpdate(): HasOne
+    {
+        return $this->hasOne(DeliveryTrackingUpdate::class, 'driver_id')
+            ->latestOfMany('recorded_at');
+    }
+
     public function statusHistories(): HasMany
     {
         return $this->hasMany(OrderStatusHistory::class, 'updated_by');
@@ -114,5 +128,21 @@ class User extends Authenticatable
     public function preferences(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(UserPreference::class);
+    }
+
+    public function favoriteRestaurants(): BelongsToMany
+    {
+        return $this->belongsToMany(Restaurant::class, 'user_favorite_restaurants')
+            ->withTimestamps();
+    }
+
+    public function favoriteRestaurantPivots(): HasMany
+    {
+        return $this->hasMany(UserFavoriteRestaurant::class);
+    }
+
+    public function paymentMethods(): HasMany
+    {
+        return $this->hasMany(UserPaymentMethod::class);
     }
 }

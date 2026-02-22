@@ -40,6 +40,8 @@ class StoreOrderRequest extends FormRequest
         return [
             'restaurant_id' => ['required', 'integer', 'exists:restaurants,id'],
             'delivery_address' => ['required', 'string', 'max:500'],
+            'latitude' => ['nullable', 'numeric', 'between:-90,90'],
+            'longitude' => ['nullable', 'numeric', 'between:-180,180'],
             'customer_notes' => ['nullable', 'string', 'max:1000'],
             'coupon_code' => ['nullable', 'string', 'max:32', 'regex:/^[A-Z0-9_-]+$/'],
             'items' => ['required', 'array', 'min:1'],

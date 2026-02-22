@@ -8,6 +8,8 @@ use App\Enums\OrderStatus;
 use App\Enums\UserRole;
 use App\Events\OrderStatusUpdated;
 use App\Http\Controllers\Controller;
+use App\Models\SystemSetting;
+use App\Services\DistanceCalculator;
 use App\Http\Requests\Api\V1\StoreOrderRequest;
 use App\Http\Resources\OrderResource;
 use App\Models\Coupon;
@@ -76,7 +78,7 @@ class CustomerOrderController extends Controller
             $menuItems,
         );
 
-        $deliveryFeeCents = (int) config('food.delivery_fee_cents', 500);
+        $deliveryFeeCents = $this->calculateDeliveryFee($validated, $restaurant);
         $subtotalCents = 0;
         $lineItems = [];
 
@@ -333,5 +335,32 @@ class CustomerOrderController extends Controller
         }
 
         abort(403);
+    }
+
+    /**
+     * Calculate delivery fee based on distance between customer and restaurant.
+     *
+     * @param  array<string, mixed>  $validated
+     */
+    protected function calculateDeliveryFee(array $validated, Restaurant $restaurant): int
+    {
+        $userLat = $validated['latitude'] ?? null;
+        $userLng = $validated['longitude'] ?? null;
+
+        if ($userLat === null || $userLng === null || $restaurant->latitude === null || $restaurant->longitude === null) {
+            return SystemSetting::getInt('delivery_base_fee_cents', 3000);
+        }
+
+        $distanceKm = DistanceCalculator::haversine(
+            (float) $restaurant->latitude,
+            (float) $restaurant->longitude,
+            (float) $userLat,
+            (float) $userLng,
+        );
+
+        $baseFee = SystemSetting::getInt('delivery_base_fee_cents', 3000);
+        $perKm = SystemSetting::getInt('delivery_per_km_cents', 1500);
+
+        return $baseFee + (int) ceil($distanceKm * $perKm);
     }
 }
