@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Jobs\SendExpoPushNotification;
 use App\Models\Order;
 use App\Models\OrderStatusHistory;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -17,7 +18,37 @@ class OrderStatusUpdated implements ShouldBroadcastNow
     /**
      * Create a new event instance.
      */
-    public function __construct(public Order $order, public ?OrderStatusHistory $history = null) {}
+    public function __construct(public Order $order, public ?OrderStatusHistory $history = null)
+    {
+        $this->dispatchPushNotifications();
+    }
+
+    protected function dispatchPushNotifications(): void
+    {
+        $status = $this->order->status->value ?? 'updated';
+        $customer = $this->order->customer;
+        $driver = $this->order->driver;
+
+        // Notify customer
+        if ($customer !== null && $customer->expo_push_token !== null) {
+            SendExpoPushNotification::dispatch(
+                $customer,
+                'Order Update 📦',
+                "Your order #{$this->order->id} is now {$status}.",
+                ['order_id' => $this->order->id, 'type' => 'order_status'],
+            );
+        }
+
+        // Notify driver if assigned/updated
+        if ($driver !== null && $driver->expo_push_token !== null) {
+            SendExpoPushNotification::dispatch(
+                $driver,
+                'Delivery Update 🛵',
+                "Order #{$this->order->id} status changed to {$status}.",
+                ['order_id' => $this->order->id, 'type' => 'delivery_status'],
+            );
+        }
+    }
 
     /**
      * Get the channels the event should broadcast on.

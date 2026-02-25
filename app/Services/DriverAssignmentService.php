@@ -2,10 +2,8 @@
 
 namespace App\Services;
 
-use App\Enums\OrderStatus;
 use App\Enums\UserRole;
 use App\Enums\VehicleType;
-use App\Models\DeliveryTrackingUpdate;
 use App\Models\Order;
 use App\Models\SystemSetting;
 use App\Models\User;

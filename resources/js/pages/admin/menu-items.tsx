@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import AppLayout from '@/layouts/app-layout';
+import { ImageUploader } from '@/components/image-uploader';
 import { dashboard as adminDashboard } from '@/routes/admin';
 import {
     destroy as adminMenuItemsDestroy,
@@ -44,6 +45,7 @@ type MenuItemRow = {
     owner_name: string | null;
     name: string;
     description: string | null;
+    image_url: string | null;
     price_cents: number;
     prep_time_minutes: number;
     is_available: boolean;
@@ -190,8 +192,11 @@ export default function AdminMenuItems({
                             <Input
                                 name="description"
                                 placeholder="Description"
-                                className="lg:col-span-4"
+                                className="lg:col-span-2"
                             />
+                            <div className="lg:col-span-2">
+                                <ImageUploader name="image_url" />
+                            </div>
                             <select
                                 name="is_available"
                                 defaultValue="1"
@@ -279,8 +284,12 @@ export default function AdminMenuItems({
                                         <Input
                                             name="description"
                                             defaultValue={menuItem.description ?? ''}
-                                            className="md:col-span-4"
+                                            placeholder="Description"
+                                            className="md:col-span-2"
                                         />
+                                        <div className="md:col-span-2">
+                                            <ImageUploader name="image_url" defaultValue={menuItem.image_url ?? undefined} />
+                                        </div>
                                         <Button type="submit" variant="outline" size="sm">
                                             Save
                                         </Button>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateUserPreferenceRequest;
-use App\Models\UserPreference;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -18,7 +17,7 @@ class UserPreferenceController extends Controller
         $preferences = $request->user()->preferences()->first();
 
         return response()->json([
-            'data' => $preferences ?: new \stdClass(),
+            'data' => $preferences ?: new \stdClass,
         ]);
     }
 

@@ -11,6 +11,7 @@ import {
     Percent,
     ShoppingBag,
     Store,
+    Settings,
     Tag,
     Tv,
     UtensilsCrossed,
@@ -36,6 +37,7 @@ import { index as adminOrdersIndex } from '@/routes/admin/orders';
 import { index as adminRestaurantsIndex } from '@/routes/admin/restaurants';
 import { index as adminSpecialOffersIndex } from '@/routes/admin/special-offers';
 import { index as adminStoriesIndex } from '@/routes/admin/stories';
+import { index as adminSystemSettingsIndex } from '@/routes/admin/system-settings';
 import { index as adminUsersIndex } from '@/routes/admin/users';
 import type { NavItem, SharedData } from '@/types';
 import { NavUser } from './nav-user';
@@ -104,6 +106,11 @@ const adminNavItems: NavItem[] = [
         title: 'POS',
         href: '/admin/pos',
         icon: Calculator,
+    },
+    {
+        title: 'System Settings',
+        href: adminSystemSettingsIndex(),
+        icon: Settings,
     },
 ];
 

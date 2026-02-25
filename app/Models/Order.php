@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\OrderStatus;
+use App\Enums\PaymentMethod;
+use App\Enums\PaymentStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -33,6 +35,9 @@ class Order extends Model
         'customer_notes',
         'placed_at',
         'delivered_at',
+        'payment_method',
+        'payment_status',
+        'payment_reference',
     ];
 
     /**
@@ -42,6 +47,8 @@ class Order extends Model
     {
         return [
             'status' => OrderStatus::class,
+            'payment_method' => PaymentMethod::class,
+            'payment_status' => PaymentStatus::class,
             'assigned_at' => 'datetime',
             'placed_at' => 'datetime',
             'delivered_at' => 'datetime',
@@ -101,5 +108,10 @@ class Order extends Model
     public function chatMessages(): HasMany
     {
         return $this->hasMany(OrderChatMessage::class)->orderBy('id');
+    }
+
+    public function rating(): HasOne
+    {
+        return $this->hasOne(Rating::class);
     }
 }

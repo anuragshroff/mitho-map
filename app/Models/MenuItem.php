@@ -22,6 +22,7 @@ class MenuItem extends Model
         'price_cents',
         'prep_time_minutes',
         'is_available',
+        'image_url',
     ];
 
     /**

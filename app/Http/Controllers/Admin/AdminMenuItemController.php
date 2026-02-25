@@ -60,6 +60,7 @@ class AdminMenuItemController extends Controller
                     'price_cents' => $menuItem->price_cents,
                     'prep_time_minutes' => $menuItem->prep_time_minutes,
                     'is_available' => $menuItem->is_available,
+                    'image_url' => $menuItem->image_url,
                     'order_items_count' => $menuItem->order_items_count,
                 ];
             });

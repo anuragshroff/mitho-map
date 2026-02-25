@@ -5,18 +5,20 @@ use App\Http\Controllers\Api\V1\AuthRegistrationController;
 use App\Http\Controllers\Api\V1\AuthTokenController;
 use App\Http\Controllers\Api\V1\CurrentUserController;
 use App\Http\Controllers\Api\V1\CustomerOrderController;
+use App\Http\Controllers\Api\V1\DeliveryFeeController;
 use App\Http\Controllers\Api\V1\DriverTrackingController;
 use App\Http\Controllers\Api\V1\KitchenOrderTicketController;
 use App\Http\Controllers\Api\V1\OrderChatController;
+use App\Http\Controllers\Api\V1\OrderRatingController;
+use App\Http\Controllers\Api\V1\PaymentController;
 use App\Http\Controllers\Api\V1\PhoneLoginController;
 use App\Http\Controllers\Api\V1\PhoneVerificationController;
 use App\Http\Controllers\Api\V1\RestaurantOrderStatusController;
 use App\Http\Controllers\Api\V1\RestaurantStoryController;
 use App\Http\Controllers\Api\V1\SearchController;
 use App\Http\Controllers\Api\V1\SocialAuthController;
-use App\Http\Controllers\Api\V1\DeliveryFeeController;
-use App\Http\Controllers\Api\V1\OrderRatingController;
 use App\Http\Controllers\Api\V1\UpdateCurrentUserController;
+use App\Http\Controllers\Api\V1\UploadController;
 use App\Http\Controllers\Api\V1\UserFavoriteRestaurantController;
 use App\Http\Controllers\Api\V1\UserNotificationController;
 use App\Http\Controllers\Api\V1\UserPaymentMethodController;
@@ -175,5 +177,15 @@ Route::prefix('v1')->name('api.v1.')->group(function () {
         Route::post('orders/{order}/rating', [OrderRatingController::class, 'store'])
             ->middleware('ability:orders:write')
             ->name('orders.rating.store');
+
+        Route::post('orders/{order}/initiate-payment', [PaymentController::class, 'initiate'])
+            ->middleware('ability:orders:write')
+            ->name('orders.payment.initiate');
+
+        Route::post('upload', [UploadController::class, 'store'])
+            ->name('upload.store');
     });
+
+    Route::any('payments/{provider}/callback', [PaymentController::class, 'callback'])
+        ->name('payments.callback');
 });

@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminPosController;
 use App\Http\Controllers\Admin\AdminRestaurantController;
 use App\Http\Controllers\Admin\AdminStoryController;
+use App\Http\Controllers\Admin\AdminSystemSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -84,6 +85,9 @@ Route::middleware(['auth', 'verified', 'admin'])
 
         Route::get('pos', [AdminPosController::class, 'index'])->name('pos.index');
         Route::post('pos', [AdminPosController::class, 'store'])->name('pos.store');
+
+        Route::get('system-settings', [AdminSystemSettingController::class, 'index'])->name('system-settings.index');
+        Route::put('system-settings', [AdminSystemSettingController::class, 'update'])->name('system-settings.update');
     });
 
 require __DIR__.'/settings.php';

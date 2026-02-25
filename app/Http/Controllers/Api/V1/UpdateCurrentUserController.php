@@ -7,6 +7,7 @@ use App\Http\Requests\Api\V1\UpdateCurrentUserRequest;
 use App\Models\User;
 use App\Services\Auth\PhoneVerificationCodeService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
 class UpdateCurrentUserController extends Controller
@@ -76,6 +77,26 @@ class UpdateCurrentUserController extends Controller
                     'provider_email' => $account->provider_email,
                 ])->values(),
             ],
+        ]);
+    }
+
+    /**
+     * Update the user's Expo Push Token for notifications.
+     */
+    public function updatePushToken(Request $request): JsonResponse
+    {
+        $validated = $request->validate([
+            'token' => ['nullable', 'string', 'max:255'],
+        ]);
+
+        /** @var User $user */
+        $user = $request->user();
+
+        $user->expo_push_token = $validated['token'];
+        $user->save();
+
+        return response()->json([
+            'message' => 'Push token updated successfully.',
         ]);
     }
 }

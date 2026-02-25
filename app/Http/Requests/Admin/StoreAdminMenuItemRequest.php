@@ -28,6 +28,7 @@ class StoreAdminMenuItemRequest extends FormRequest
             'price_cents' => ['required', 'integer', 'min:1', 'max:1000000'],
             'prep_time_minutes' => ['required', 'integer', 'min:1', 'max:240'],
             'is_available' => ['required', 'boolean'],
+            'image_url' => ['nullable', 'url', 'max:1000'],
         ];
     }
 }
